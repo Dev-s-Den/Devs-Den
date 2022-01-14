@@ -13,4 +13,22 @@
     background-color: #fff;
     border-radius: 50%;
   }
+  .search-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .form-inline my-2 my-lg-0 {
+    display: flex;
+    justify-content: center;
+  }
+
+  #anything {
+    border: solid, 4px, black;
+    justify-content: center;
+    align-items: center;
+    background-color: magenta;
+    opacity: 0.54;
+  }
 }
