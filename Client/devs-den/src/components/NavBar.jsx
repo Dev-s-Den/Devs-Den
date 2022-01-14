@@ -3,18 +3,28 @@ import React from "react";
 // Styles
 import "./Styles/NavBar.scss";
 
+/**
+ * This is for className "clear" to clear the input.
+ * onClick="document.getElementById(search-input).value = ''"
+ *
+ * Scripts commented in index.html are used to minimize and expanding the search
+ */
+
 function NavBar() {
   return (
-    <nav  className="navbar navbar-light bg-light">
+    <div className="navbar">
       <div className="navbar-user"></div>
-      <div className="collapse navbar-collapse">
-        <form class="form-inline">
-          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"/>
-          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-        </form>
-      </div> 
-      <div className="navbar-login/logout"><h3>Login | Logout</h3></div> 
-    </nav>
+      <div className="navbar-search">
+        <div className="icon"></div>
+        <div className="input">
+          <input id="search-input" type="text" placeholder="Search"></input>
+        </div>
+        <div className="clear"></div>
+      </div>
+      <div className="navbar-login_logout">
+        <h3>Login | Logout</h3>
+      </div>
+    </div>
   );
 }
 
