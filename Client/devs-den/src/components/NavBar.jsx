@@ -1,5 +1,5 @@
 import React from 'react'
-import './Styles/navbar.scss';
+import './Styles/NavBar.scss';
 
 export default function Navbar() {
   return (
@@ -25,7 +25,7 @@ export default function Navbar() {
     <div className="navbar-search mr-auto">
         <div className="icon"></div>
         <div className="input">
-          <input id="search-input" type="text" placeholder="Search"></input>
+          <input id="search-input" type="text" placeholder="Explore"></input>
         </div>
          <div className="clear"></div>
        </div>
