@@ -1,27 +1,14 @@
 .navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: aqua;
-  min-height: 100hv;
-  font-size: large;
-
-  .navbar-user {
-    margin-left: 15px;
-    width: 50px;
-    height: 50px;
+  .padding {
     display: flex;
-    background-color: #fff;
-    border-radius: 50%;
+    justify-content: center;
+    margin-right: 50px;
   }
 
-  // Left width at 360px for view until state is implemented
-  // width should be 60px
   .navbar-search {
-    position: relative;
     // display: flex;
     width: 360px;
-    height: 60px;
+    height: 45px;
     background-color: #fff;
     border-radius: 60px;
     transition: 0.5s;
@@ -38,7 +25,7 @@
     top: 0;
     left: 0;
     width: 60px;
-    height: 60px;
+    height: 45px;
     background-color: #fff;
     border-radius: 60px;
     display: flex;
@@ -61,19 +48,14 @@
     position: absolute;
     width: 3px;
     height: 12px;
-    background: aqua;
+    background-color: rgb(22, 205, 205);
     transform: translate(6px, 6px) rotate(315deg);
-  }
-
-  .navbar-login_logout {
-    display: flex;
-    justify-content: center;
   }
 
   .navbar-search .input {
     position: relative;
     width: 300px;
-    height: 60px;
+    height: 45px;
     left: 60px;
     display: flex;
     justify-content: center;
@@ -89,7 +71,6 @@
     outline: none;
     padding: 10px 0;
   }
-
   .clear {
     position: absolute;
     top: 37%;
@@ -118,5 +99,15 @@
     height: 15px;
     background-color: #999;
     transform: rotate(315deg);
+  }
+}
+
+@media (min-width: 992px) {
+  .navbar-search {
+    position: absolute;
+    width: auto;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
   }
 }

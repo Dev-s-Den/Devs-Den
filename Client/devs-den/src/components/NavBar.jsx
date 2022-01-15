@@ -1,31 +1,42 @@
-import React from "react";
+import React from 'react'
+import './Styles/navbar.scss';
 
-// Styles
-import "./Styles/NavBar.scss";
-
-/**
- * This is for className "clear" to clear the input.
- * onClick="document.getElementById(search-input).value = ''"
- *
- * Scripts commented in index.html are used to minimize and expanding the search
- */
-
-function NavBar() {
+export default function Navbar() {
   return (
-    <div className="navbar">
-      <div className="navbar-user"></div>
-      <div className="navbar-search">
+<nav className="navbar navbar-expand-lg navbar-dark py-4" style={{backgroundColor:'#222'}} >
+  <a className="navbar-brand" href="test">Dev's Den</a>
+  <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span className="navbar-toggler-icon"></span>
+  </button>
+
+  <div className="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul className="navbar-nav mr-auto">
+      <li className="nav-item dropdown">
+        <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Dropdown
+        </a>
+        <div className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <a className="dropdown-item" href="#">Action</a>
+          <a className="dropdown-item" href="#">Another action</a>
+          <a className="dropdown-item" href="#">Something else here</a>
+        </div>
+      </li>
+    </ul>
+    <div className="navbar-search mr-auto">
         <div className="icon"></div>
         <div className="input">
           <input id="search-input" type="text" placeholder="Search"></input>
         </div>
-        <div className="clear"></div>
-      </div>
-      <div className="navbar-login_logout">
-        <h3>Login | Logout</h3>
-      </div>
+         <div className="clear"></div>
+       </div>
+    
+    <ul className="nav navbar-nav navbar-right">
+        <li className="nav-item dropdown">
+          <a href="#" className="nav-link dropdown-toggle" id="navbarDropdown" data-toggle="dropdown" role="button"><b>Login| Signup</b></a>
+          </li>
+    </ul>
     </div>
-  );
-}
 
-export default NavBar;
+</nav>
+)
+}
