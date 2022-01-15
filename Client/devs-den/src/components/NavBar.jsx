@@ -17,7 +17,7 @@ function NavBar() {
       <div className="navbar-search">
         <div className="icon"></div>
         <div className="input">
-          <input id="search-input" type="text" placeholder="Search"></input>
+          <input id="search-input" type="text" placeholder="Explore"></input>
         </div>
         <div className="clear"></div>
       </div>
