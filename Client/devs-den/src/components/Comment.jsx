@@ -1,8 +1,7 @@
 import React from "react";
-import "./Comment.scss"
+import "./Styles/Comment.scss";
 
 export default function Comment(props) {
-
   return (
     <article className="comment">
       <span className="comment--user--avatar"></span>
@@ -14,6 +13,5 @@ export default function Comment(props) {
         <p className="comment--text">{props.content}</p>
       </div>
     </article>
-  )
+  );
 }
-

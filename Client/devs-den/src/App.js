@@ -2,11 +2,11 @@
 import React, { useState } from 'react';
 
 // Compnents
-import NavBar from './components/NavBar/NavBar';
+import NavBar from './components/NavBar';
+import Post from './components/Post';
 
 // Styles
 import './App.css';
-import Post from './Post.jsx'
 
 function App() {
   // States

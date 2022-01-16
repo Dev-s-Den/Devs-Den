@@ -3,10 +3,10 @@ import React, { useState } from "react";
 // Components
 
 // Styles
-import "../Styles/NavBar.scss";
+import "./Styles/NavBar.scss";
 
 // Helper functions
-import { click } from "../../helpers/helper";
+import { click } from "../helpers/helper";
 
 export default function Navbar(props) {
   //States
