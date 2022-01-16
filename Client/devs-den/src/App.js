@@ -6,6 +6,7 @@ import NavBar from './components/NavBar/NavBar';
 
 // Styles
 import './App.css';
+import Post from './Post.jsx'
 
 function App() {
   // States
@@ -18,6 +19,7 @@ function App() {
   return (
     <div className="App">
       <NavBar value={value} setValue={setValue} />
+      <Post />
     </div>
   );
 }
