@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 // Compnents
 import NavBar from './components/NavBar';
 import Post from './components/Post';
+import Chat from './components/Chat';
 
 // Styles
 import './App.css';
@@ -20,6 +21,7 @@ function App() {
     <div className="App">
       <NavBar value={value} setValue={setValue} />
       <Post />
+      <Chat />
     </div>
   );
 }
