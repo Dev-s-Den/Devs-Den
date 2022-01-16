@@ -1,25 +1,27 @@
-import logo from './logo.svg';
+// Libraries
+import React, { useState } from 'react';
+
+// Compnents
+import NavBar from './components/NavBar/NavBar';
+
+// Styles
 import './App.css';
 
 function App() {
+  // States
+  const [value, setValue] = useState("");
+  // const [clear, setClear] = useState("");
+
+  // Helper functions
+  // const changeValue = newValue => { setValue(newValue) };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <NavBar value={value} setValue={setValue} />
     </div>
   );
 }
 
 export default App;
+
+// changeValue={() => changeValue(e => { setValue(e.target.value) })}
