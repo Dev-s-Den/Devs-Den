@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 // Compnents
 import NavBar from './components/NavBar';
 import Post from './components/Post';
+import ForumNavBar from './components/ForumNavBar';
 
 // Styles
 import './App.css';
@@ -19,6 +20,7 @@ function App() {
   return (
     <div className="App">
       <NavBar value={value} setValue={setValue} />
+      <ForumNavBar></ForumNavBar>
       <Post />
     </div>
   );
