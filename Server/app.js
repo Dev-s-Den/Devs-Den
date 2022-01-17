@@ -11,7 +11,7 @@ const app = express();
 
 app.use(logger('dev'));
 app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({ extended: true }));
 app.use(cookieSession({
   name: process.env.SESSION_NAME,
   keys: [process.env.SESSION_KEY1, process.env.SESSION_KEY2]
