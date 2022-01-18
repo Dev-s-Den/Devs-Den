@@ -3,13 +3,13 @@ import React, { useState } from "react";
 import "./Styles/Post.scss";
 import Comment from "./Comment.jsx";
 
-export default function Post() {
-  const post = {
-    name: "Alex Raffa",
-    time: "Today | 10:39",
-    content:
-      "I have a stream of (uniform) random bits from which I'd like to generate random integers uniformly in the range [0,n] without wasting bits. (I'm considering bits wasted which are in excess of floor(log_2(n))+1, on the assumption that it's always possible to use no more than that.) E.g., if n = 5, then the algorithm I'm looking for should use no more than three bits. How can this be done?",
-  };
+export default function Post(props) {
+  // const post = {
+  //   name: "Alex Raffa",
+  //   time: "Today | 10:39",
+  //   content:
+  //     "I have a stream of (uniform) random bits from which I'd like to generate random integers uniformly in the range [0,n] without wasting bits. (I'm considering bits wasted which are in excess of floor(log_2(n))+1, on the assumption that it's always possible to use no more than that.) E.g., if n = 5, then the algorithm I'm looking for should use no more than three bits. How can this be done?",
+  // };
 
   const [comments, setComments] = useState([
     {
@@ -59,15 +59,15 @@ export default function Post() {
       <header className="post--header">
         <div className="post--header--left">
           <span className="post--avatar"></span>
-          <h2 className="post--name">{post.name}</h2>
+          <h2 className="post--name">{props.name}</h2>
         </div>
         <div className="post--header--left">
-          <small className="post--Time">{post.time}</small>
+          <small className="post--Time">{props.time}</small>
         </div>
       </header>
 
       <div className="post--body">
-        <p>{post.content}</p>
+        <p>{props.content}</p>
       </div>
 
       {showComments && (
