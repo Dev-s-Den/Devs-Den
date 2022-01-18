@@ -4,4 +4,8 @@ const click = function(obj, setObj) {
     : setObj({ width: "60px" });
 };
 
-export { click };
+const logForm = function(state, setState) {
+  state === 'none' ? setState('flex') : setState('none')
+}
+
+export { click, logForm };
