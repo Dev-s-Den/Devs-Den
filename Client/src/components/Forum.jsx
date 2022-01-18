@@ -1,4 +1,5 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
+import axios from "axios";
 
 // Styles
 import "./Styles/Forum.scss";
@@ -12,6 +13,20 @@ export default function Forum() {
       "https://getflywheel.com/layout/wp-content/uploads/2019/02/The_Best_Java_Script_Libraries_1800x500-1-1568x436.jpg",
     name: "JavaScript",
   };
+
+  const [posts, setPosts] = useState([])
+
+
+  useEffect(() => {
+    Promise.all([
+      axios.get('/api/posts/1'),
+    ]).then((data) => {
+      setPosts(data[0].data);
+    });
+  }, [])
+
+  console.log(posts)
+
 
   const postDataToRender = [
     {
@@ -51,7 +66,7 @@ export default function Forum() {
       </div>
 
       <div className="forum-postContainer">
-        {postDataToRender.map(function (postdata) {
+        {posts.map(function (postdata) {
           return <Post key={postdata.id} {...postdata} />;
         })}
       </div>
