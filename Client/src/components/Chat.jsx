@@ -1,9 +1,21 @@
 import React from "react"
 
-export default function Chat() {
+import "./Styles/Chat.scss"
+
+export default function Chat(props) {
+
+ 
+
   return(
-    <div>
-      hello
+    <div className={`modal-chat-exterior ${props.show ? 'show': ''}`} onClick={props.closeModal}>
+      
+      <div className="modal-chat-body" onClick={e => e.stopPropagation()}>
+        Body Of THE MODAL
+        <div className="modal-chat-footer">
+          <button onClick={props.closeModal}>CLOSE MODAL</button>
+        </div>
+      </div>
+      
     </div>
   ) 
 }

@@ -18,12 +18,15 @@ function App() {
   // Helper functions
   // const changeValue = newValue => { setValue(newValue) };
 
+  const [showModal, setShowModal] = useState("false")
+
   return (
     <div className="App">
       <NavBar value={value} setValue={setValue} />
       <ForumNavBar></ForumNavBar>
-      <Post />
-      <Chat/>
+      <button onClick = {() => setShowModal(true)}> Show Modal </button>
+      <Post /> 
+      <Chat show={showModal} closeModal={() => setShowModal(false)}/>
     </div>
   );
 }
