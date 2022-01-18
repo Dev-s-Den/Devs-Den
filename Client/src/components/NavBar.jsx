@@ -1,16 +1,18 @@
 import React, { useState } from "react";
 
 // Components
+import SigninSignup from "./SigninSignup";
 
 // Styles
 import "./Styles/NavBar.scss";
 
 // Helper functions
-import { click } from "../helpers/helper";
+import { click, logForm } from "../helpers/helper";
 
 export default function Navbar(props) {
   //States
   const [clicked, setClicked] = useState({ width: "60px" });
+  const [form, setForm] = useState("none");
 
   return (
     <nav
@@ -86,17 +88,13 @@ export default function Navbar(props) {
         </div>
 
         <ul className="nav navbar-nav navbar-right">
-          <li className="nav-item dropdown">
-            <a
-              href="#"
-              className="nav-link dropdown-toggle"
-              id="navbarDropdown"
-              data-toggle="dropdown"
-              role="button"
-            >
-              <b>Login| Signup</b>
-            </a>
-          </li>
+          <button
+            className="btn btn-lg btn-outline-success"
+            onClick={() => logForm(form, setForm)}
+          >
+            Register
+          </button>
+          <SigninSignup state={form} />
         </ul>
       </div>
     </nav>
