@@ -8,8 +8,6 @@ module.exports = () => {
       .then(data => res.json(data))
   })
   router.post('/:forum_id', (req, res) => {
-    console.log(req.body)
-    console.log('We hit forum route')
     addPosts(req.body.user_id, req.body.forum_id, req.body.content, req.body.img)
       .then(data => res.json(data))
   })

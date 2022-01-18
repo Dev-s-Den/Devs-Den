@@ -4,7 +4,6 @@ const path = require('path');
 const cookieSession = require('cookie-session');
 const logger = require('morgan');
 
-const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const commentsRouter = require('./routes/comments');
 const postsRouter = require('./routes/posts');
@@ -21,8 +20,7 @@ app.use(cookieSession({
 }));
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
+app.use('/api/users', usersRouter());
 app.use('/api/comments', commentsRouter());
 app.use('/api/posts', postsRouter());
 app.use('/api/forums', forumsRouter());
