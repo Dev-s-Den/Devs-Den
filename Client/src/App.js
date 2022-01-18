@@ -24,9 +24,15 @@ function App() {
     <div className="App">
       <NavBar value={value} setValue={setValue} />
       <ForumNavBar></ForumNavBar>
-      <button onClick = {() => setShowModal(true)}> Show Modal </button>
+      
       <Post /> 
       <Chat show={showModal} closeModal={() => setShowModal(false)}/>
+      <button className='messaging-bar' onClick = {() => setShowModal(true)}> 
+        <div className="messaging-bar-avatar-container">
+          <span className="messaging-bar-avatar"></span> 
+        </div>
+        <p>Messaging</p> 
+      </button>
     </div>
   );
 }
