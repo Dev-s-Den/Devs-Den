@@ -11,6 +11,8 @@ const forumsRouter = require('./routes/forums');
 
 const app = express();
 
+
+
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -24,6 +26,5 @@ app.use('/api/users', usersRouter());
 app.use('/api/comments', commentsRouter());
 app.use('/api/posts', postsRouter());
 app.use('/api/forums', forumsRouter());
-
 
 module.exports = app;
