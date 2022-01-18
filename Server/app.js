@@ -8,6 +8,7 @@ const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const commentsRouter = require('./routes/comments');
 const postsRouter = require('./routes/posts');
+const forumsRouter = require('./routes/forums');
 
 const app = express();
 
@@ -24,6 +25,7 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/api/comments', commentsRouter());
 app.use('/api/posts', postsRouter());
+app.use('/api/forums', forumsRouter());
 
 
 module.exports = app;

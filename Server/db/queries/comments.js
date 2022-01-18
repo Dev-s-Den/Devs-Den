@@ -3,7 +3,7 @@ const dbConnection = require('../connection');
 const getComments = async (post_id) => {
   const values = post_id;
   try {
-    const data = await dbConnection.query('SELECT * FROM comments WHERE post_id=$1', [values]);
+    const data = await dbConnection.query('SELECT * FROM comments WHERE post_id=$1;', [values]);
     return data.rows;
   } catch (err) {
     console.error(err.message);
