@@ -15,7 +15,7 @@ function App() {
   // States
   const [value, setValue] = useState("");
 
-  const [showModal, setShowModal] = useState("false")
+  const [showModal, setShowModal] = useState(false)
 
   return (
     <div className="App">
