@@ -20,7 +20,7 @@
 
 .modal-chat-body{
   background-color: white;
-  width: 250px;
+  width: 850px;
   height:250px;
   transform: translateY(-200px);
   transition: all 0.3s ease-in-out;
@@ -30,3 +30,4 @@
 .modal.show .modal-chat-body{
   transform: translateY(0);
 }
+
