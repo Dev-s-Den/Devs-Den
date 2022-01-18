@@ -20,9 +20,8 @@ function App() {
   return (
     <div className="App">
       <NavBar value={value} setValue={setValue} />
-      <Forum />
       <ForumNavBar></ForumNavBar>
-
+      <Forum />
       <Chat show={showModal} closeModal={() => setShowModal(false)} />
       <button className='messaging-bar' onClick={() => setShowModal(true)}>
         <div className="messaging-bar-avatar-container">
