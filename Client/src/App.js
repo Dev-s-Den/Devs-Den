@@ -17,11 +17,14 @@ function App() {
 
   const [showModal, setShowModal] = useState(false)
 
+  const [forum,setForum] = useState('none')
+
   return (
     <div className="App">
       <NavBar value={value} setValue={setValue} />
-      <ForumNavBar></ForumNavBar>
-      <Forum />
+      <ForumNavBar setForum = {setForum}/>
+      {!(forum === "none") && (<Forum forum_id = {forum}/>)}
+      {(forum === "none") && (<p>HOMEPAGE</p>)}
       <Chat show={showModal} closeModal={() => setShowModal(false)} />
       <button className='messaging-bar' onClick={() => setShowModal(true)}>
         <div className="messaging-bar-avatar-container">
