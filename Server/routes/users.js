@@ -1,6 +1,10 @@
 const express = require('express');
 const router = express.Router();
-const { getUsers, addUsers } = require('../db/queries/users');
+const { getUsers, addUsers, checkUser } = require('../db/queries/users');
+
+const bcrypt = require('bcryptjs');
+const cookieSession = require('cookie-session');
+
 
 module.exports = () => {
   router.get('/', (req, res) => {
@@ -8,8 +12,19 @@ module.exports = () => {
   })
 
   router.post('/', (req, res) => {
-    addUsers(req.body.avatar, req.body.first_name, req.body.last_name, req.body.email, req.body.password, req.body.github_url)
+    const hashPassword = bcrypt.hashSync(req.body.password, 10)
+    addUsers(req.body.avatar, req.body.first_name, req.body.last_name, req.body.email, hashPassword, req.body.github_url)
       .then(data => res.json(data))
+  })
+
+  router.post('/login', (req, res) => {
+    checkUser(req.body.email)
+      .then(data => {
+        if (!bcrypt.compareSync(req.body.password, data[0].password)) {
+          return res.send('Incorrect credentials').status(403);
+        }
+        res.send(req.session.user_id = data[0].user_id)
+      })
   })
 
   return router;

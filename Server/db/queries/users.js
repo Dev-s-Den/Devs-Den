@@ -20,6 +20,17 @@ const addUsers = async (avatar, first_name, last_name, email, password, github_u
     console.error(err.message);
     return err.message;
   }
+
+}
+const checkUser = async (email) => {
+  const values = [email];
+  try {
+    const data = await dbConnection.query('SELECT * FROM users WHERE email=$1;', values)
+    return data.rows;
+  } catch (err) {
+    console.error(err.message);
+    return err.message;
+  }
 }
 
-module.exports = { getUsers, addUsers }
+module.exports = { getUsers, addUsers, checkUser }

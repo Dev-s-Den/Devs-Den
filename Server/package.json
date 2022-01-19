@@ -8,6 +8,7 @@
     "db:reset": "node bin/resetdb.js"
   },
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "chalk": "^2.4.2",
     "cookie-session": "^2.0.0",
     "debug": "~2.6.9",
