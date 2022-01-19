@@ -14,7 +14,7 @@ export default function ForumNavBar(props) {
 
       <div className="forumnav-container" onClick = {()=>props.setForum(2)}>
         <span href="">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/ISO_C%2B%2B_Logo.svg/120px-ISO_C%2B%2B_Logo.svg.png" alt="Ruby"></img>
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/ISO_C%2B%2B_Logo.svg/120px-ISO_C%2B%2B_Logo.svg.png" alt="C++"></img>
         </span>
       </div>
     </nav>
