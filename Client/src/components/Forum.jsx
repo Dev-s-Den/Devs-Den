@@ -7,37 +7,40 @@ import "./Styles/Forum.scss";
 // Components
 import Post from "./Post.jsx";
 
-export default function Forum() {
-  const foruminfo = {
-    image:
-      "https://getflywheel.com/layout/wp-content/uploads/2019/02/The_Best_Java_Script_Libraries_1800x500-1-1568x436.jpg",
-    name: "JavaScript",
-  };
+export default function Forum(props) {
 
+  const [isLoading, setLoading] = useState(true)
   const [posts, setPosts] = useState([])
-
+  const [banner, setBanner] = useState([])
 
   useEffect(() => {
     Promise.all([
-      axios.get('/api/posts/1'),
+      axios.get(`/api/forums/${props.forum_id}`),
+      axios.get(`/api/posts/${props.forum_id}`)
     ]).then((data) => {
-      setPosts(data[0].data);
+      console.log(data)
+      setPosts(data[1].data);
+      setBanner(data[0].data)
+      setLoading(false)
     });
-  }, [])
+  }, [props.forum_id])
 
+  if (isLoading) {
+    return <div>LOADING...</div> 
+  }
 
   return (
     <section>
       <div className="forum-name">
         <h1>
-          <em>{foruminfo.name}</em>
+          <em>{banner[0].title}</em>
         </h1>
       </div>
       <div>
         <img
           className="forum-banner"
-          src={foruminfo.image}
-          alt={foruminfo.name}
+          src={banner[0].img}
+          alt={banner[0].title}
         />
       </div>
 
