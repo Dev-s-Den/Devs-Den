@@ -1,4 +1,5 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
+import axios from "axios";
 
 // Styles
 import "./Styles/Forum.scss";
@@ -6,52 +7,45 @@ import "./Styles/Forum.scss";
 // Components
 import Post from "./Post.jsx";
 
-export default function Forum() {
-  const foruminfo = {
-    image:
-      "https://getflywheel.com/layout/wp-content/uploads/2019/02/The_Best_Java_Script_Libraries_1800x500-1-1568x436.jpg",
-    name: "JavaScript",
-  };
+export default function Forum(props) {
 
-  const postDataToRender = [
-    {
-      id: 1,
-      name: "Alex Raffa",
-      time: "Today | 10:39",
-      content:
-        "I have a stream of (uniform) random bits from which I'd like to generate random integers uniformly in the range [0,n] without wasting bits. (I'm considering bits wasted which are in excess of floor(log_2(n))+1, on the assumption that it's always possible to use no more than that.) E.g., if n = 5, then the algorithm I'm looking for should use no more than three bits. How can this be done?",
-    },
-    {
-      id: 2,
-      name: "Johnny Legend",
-      time: "January 12",
-      content: "How can i fly to the moon using JS ",
-    },
-    {
-      id: 3,
-      name: "Peter Griffin",
-      time: "November 12",
-      content: "I am the best coder in the world",
-    },
-  ];
+  const [isLoading, setLoading] = useState(true)
+  const [posts, setPosts] = useState([])
+  const [banner, setBanner] = useState([])
+
+  useEffect(() => {
+    Promise.all([
+      axios.get(`/api/forums/${props.forum_id}`),
+      axios.get(`/api/posts/${props.forum_id}`)
+    ]).then((data) => {
+      console.log(data)
+      setPosts(data[1].data);
+      setBanner(data[0].data)
+      setLoading(false)
+    });
+  }, [props.forum_id])
+
+  if (isLoading) {
+    return <div>LOADING...</div> 
+  }
 
   return (
     <section>
       <div className="forum-name">
         <h1>
-          <em>{foruminfo.name}</em>
+          <em>{banner[0].title}</em>
         </h1>
       </div>
       <div>
         <img
           className="forum-banner"
-          src={foruminfo.image}
-          alt={foruminfo.name}
+          src={banner[0].img}
+          alt={banner[0].title}
         />
       </div>
 
       <div className="forum-postContainer">
-        {postDataToRender.map(function (postdata) {
+        {posts.map(function (postdata) {
           return <Post key={postdata.id} {...postdata} />;
         })}
       </div>

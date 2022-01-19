@@ -3,7 +3,7 @@ const dbConnection = require('../connection');
 const getPosts = async (forum_id) => {
   const values = forum_id;
   try {
-    const data = await dbConnection.query('SELECT * FROM posts WHERE forum_id=$1;', [values]);
+    const data = await dbConnection.query('SELECT posts.id, posts.created_at, first_name, last_name, avatar, content, img FROM posts JOIN users ON users.id = posts.user_id WHERE forum_id=$1;', [values]);
     return data.rows;
   } catch (err) {
     console.error(err.message);

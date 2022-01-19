@@ -16,12 +16,18 @@ function App() {
   const [value, setValue] = useState("");
 
   const [showModal, setShowModal] = useState(false)
+<<<<<<< HEAD
+=======
+
+  const [forum,setForum] = useState(0)
+>>>>>>> db/front_end_post
 
   return (
     <div className="App">
       <NavBar value={value} setValue={setValue} />
-      <ForumNavBar></ForumNavBar>
-      <Forum />
+      <ForumNavBar setForum = {setForum}/>
+      {!(forum === 0) && (<Forum forum_id = {forum}/>)}
+      {(forum === 0) && (<p>HOMEPAGE</p>)}
       <Chat show={showModal} closeModal={() => setShowModal(false)} />
       <button className='messaging-bar' onClick={() => setShowModal(true)}>
         <div className="messaging-bar-avatar-container">
