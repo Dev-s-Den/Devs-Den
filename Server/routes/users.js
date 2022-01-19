@@ -27,7 +27,7 @@ module.exports = () => {
       })
   })
 
-  router.get('/checkLogin', (req,res) => {
+  router.get('/login', (req,res) => {
     const user_email = req.session.email
     if(user_email){
       getUsers(user_email).then(data => {
@@ -38,6 +38,13 @@ module.exports = () => {
       return res.status(403).send('Not Logged In')
     }
   })
+
+  router.get('/logout', (req,res) => {
+    delete req.session.email
+    res.status(200).send('session deleted')  
+  } 
+
+  )
 
   return router;
 }
