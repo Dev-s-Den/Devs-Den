@@ -1,11 +1,8 @@
 import React, { useState } from "react";
-
-// Components
+import axios from 'axios'
 import SigninSignup from "./SigninSignup";
-
 // Styles
 import "./Styles/NavBar.scss";
-
 // Helper functions
 import { click, logForm } from "../helpers/helper";
 
@@ -13,6 +10,13 @@ export default function Navbar(props) {
   //States
   const [clicked, setClicked] = useState({ width: "60px" });
   const [form, setForm] = useState("none");
+
+  const logout = () => {
+    axios.get("/api/users/logout")
+    .then(()=> {
+      props.setUser({user_id:"", avatar: "", first_name: "", last_name: "", email: "", github_url: ""})
+    })
+  }
 
   return (
     <nav
@@ -87,15 +91,24 @@ export default function Navbar(props) {
           <div className="clear" onClick={() => props.setValue("")}></div>
         </div>
 
-        <ul className="nav navbar-nav navbar-right">
+       {(props.user.user_id==="") && ( <ul className="nav navbar-nav navbar-right">
           <button
             className="btn btn-lg btn-outline-success"
             onClick={() => logForm(form, setForm)}
           >
-            Register
+            Login
           </button>
-          <SigninSignup state={form} />
-        </ul>
+          <SigninSignup setUser={props.setUser} state={form} />
+        </ul>)}
+        {!(props.user.user_id==="") && ( <ul className="nav navbar-nav navbar-right">
+          <button
+            className="btn btn-lg btn-outline-success"
+            onClick={() => logout()}
+          >
+            Logout
+          </button>
+          
+        </ul>)}
       </div>
     </nav>
   );
