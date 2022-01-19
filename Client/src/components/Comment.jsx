@@ -14,7 +14,7 @@ export default function Comment(props) {
           <h3 className="comment--name">{first_name}</h3>
           <span className="comment--time">{created_at}</span>
         </header>
-        <p className="comment--text">{content}</p>
+        <span className="comment--text"><p >{content}</p></span>
       </div>
     </article>
   );
