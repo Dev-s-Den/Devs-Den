@@ -13,7 +13,6 @@ const getPosts = async (forum_id) => {
 
 const addPosts = async (user_id, forum_id, content, img) => {
   const values = [user_id, forum_id, content, img];
-  console.log(values);
   try {
     const data = await dbConnection.query('INSERT INTO posts (user_id, forum_id, content, img) VALUES ($1, $2, $3, $4) RETURNING *;', values);
     return data.rows;

@@ -8,7 +8,6 @@ import "./Styles/Post.scss";
 import Comment from "./Comment.jsx";
 
 export default function Post(props) {
-  console.log(props);
   // States
   const [comments, setComments] = useState([]);
 
