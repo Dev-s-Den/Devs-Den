@@ -92,7 +92,7 @@ export default function Navbar(props) {
             className="btn btn-lg btn-outline-success"
             onClick={() => logForm(form, setForm)}
           >
-            Register
+            Login
           </button>
           <SigninSignup state={form} />
         </ul>
