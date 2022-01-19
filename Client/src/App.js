@@ -19,9 +19,12 @@ function App() {
 
   const [forum, setForum] = useState(0)
 
+  const [user, setUser] = useState({})
+
+
   return (
     <div className="App">
-      <NavBar value={value} setValue={setValue} />
+      <NavBar setUser={setUser} value={value} setValue={setValue} />
       <ForumNavBar setForum={setForum} />
       {!(forum === 0) && (<Forum forum_id={forum} />)}
       {(forum === 0) && (<p>HOMEPAGE</p>)}

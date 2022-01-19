@@ -94,7 +94,7 @@ export default function Navbar(props) {
           >
             Login
           </button>
-          <SigninSignup state={form} />
+          <SigninSignup setUser={props.setUser} state={form} />
         </ul>
       </div>
     </nav>

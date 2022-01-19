@@ -10,17 +10,17 @@ export default function SigninSignup(props) {
     password: ""
   })
   
-  
   const handleSubmit = (event) => {
     event.preventDefault()
     Promise.all([
       axios.post('/api/users/login', formData),
-    ])
+    ]).then(data => {
+      console.log(data)
+      props.setUser(data[0].data)
+    })
   }
-
   const handleChange = (event) => {
     const {name, value} = event.target
-
     setFormData({...formData, [name]:value})
   }
 
