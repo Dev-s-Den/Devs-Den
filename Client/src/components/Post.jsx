@@ -28,7 +28,7 @@ export default function Post(props) {
     setComments(prev => [...prev, comment]);
     setComment("");
   };
-  console.log(props)
+
 
   return (
     <div className="post">
