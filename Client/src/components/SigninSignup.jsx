@@ -24,9 +24,6 @@ export default function SigninSignup(props) {
     setFormData({...formData, [name]:value})
   }
 
-
-
-
   return (
     <div className="form-signin" style={{ display: props.state }}>
       <form className="inner-form">
