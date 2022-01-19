@@ -58,7 +58,7 @@ export default function Post(props) {
 
       <footer className="post--footer">
         <div className="post--footer--left">
-          <span className="post--user--avatar"></span>
+          <img className="post--user--avatar"/>
           <form
           className='new-comment'
             onSubmit={(event) => {
