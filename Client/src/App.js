@@ -1,5 +1,5 @@
 // Libraries
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 // Compnents
 import NavBar from './components/NavBar';
@@ -7,9 +7,9 @@ import ForumNavBar from './components/ForumNavBar';
 import Forum from './components/Forum';
 import Chat from './components/Chat';
 
-
 // Styles
 import './App.css';
+import axios from 'axios';
 
 function App() {
   // States
@@ -21,9 +21,20 @@ function App() {
 
   const [user, setUser] = useState({})
 
+  useEffect(() => {
+    axios.get("/api/users/checkLogin")
+    .then((data)=> {
+      setUser(data.data)
+    })
+    .catch((e)=> {
+      console.error(e)
+    })
+  },[])
+
 
   return (
     <div className="App">
+      
       <NavBar setUser={setUser} value={value} setValue={setValue} />
       <ForumNavBar setForum={setForum} />
       {!(forum === 0) && (<Forum forum_id={forum} />)}
