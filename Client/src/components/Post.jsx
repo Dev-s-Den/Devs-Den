@@ -75,7 +75,7 @@ export default function Post(props) {
                 onChange={(event) => setComment(event.target.value)}
                 value={comment}
               />
-              <button className="btn btn-m btn-outline-success" type="submit">Submit</button>
+              <button className="btn btn-m btn-success" type="submit">Submit</button>
           </form>
         </div>
 
