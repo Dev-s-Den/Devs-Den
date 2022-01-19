@@ -28,6 +28,7 @@ export default function Post(props) {
     setComments(prev => [...prev, comment]);
     setComment("");
   };
+  console.log(props)
 
   return (
     <div className="post">
@@ -37,7 +38,9 @@ export default function Post(props) {
           <h2 className="post--name">{props.first_name}</h2>
         </div>
         <div className="post--header--left">
-          <small className="post--Time">{props.created_at}</small>
+          <small className="post--Time">
+          {props.created_at}
+          </small>
         </div>
       </header>
 
@@ -57,7 +60,7 @@ export default function Post(props) {
         <div className="post--footer--left">
           <span className="post--user--avatar"></span>
           <form
-          className='form-inline'
+          className='new-comment'
             onSubmit={(event) => {
               event.preventDefault();
               submitComment();
@@ -65,14 +68,14 @@ export default function Post(props) {
           >
               <input
                 type="text"
-                className="form-control mb-2 mr-sm-2"
+                className="new-comment-input"
                 id="submitNewComment"
-                aria-describedby="newComment"
+  
                 placeholder="Wite a comment..."
                 onChange={(event) => setComment(event.target.value)}
                 value={comment}
               />
-              <button className="btn btn-m btn-outline-success" type="submit">submit</button>
+              <button className="btn btn-m btn-outline-success" type="submit">Submit</button>
           </form>
         </div>
 
