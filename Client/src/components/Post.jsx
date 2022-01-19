@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import axios from 'axios';
 
 // Styles
 import "./Styles/Post.scss";
@@ -8,30 +9,27 @@ import Comment from "./Comment.jsx";
 
 export default function Post(props) {
   // States
-  const [comments, setComments] = useState([
-    {
-      id: 1,
-      avatar: "blank",
-      name: "Bob Dylan",
-      time: "Today | 10:45",
-      content:
-        "That is a very good question private message me and i can help you out",
-    },
-    {
-      id: 2,
-      avatar: "blank",
-      name: "Jerry Mcquire",
-      time: " January 11 2022, 10:39",
-      content: "Ive got no clue",
-    },
-    {
-      id: 3,
-      avatar: "blank",
-      name: "Billy Bishop",
-      time: " January 18 201",
-      content: "Holy Moly that is very smart i will give it a try",
-    },
-  ]);
+  const [comments, setComments] = useState([]);
+
+  useEffect(() => {
+
+    Promise.all([
+      axios.get(`/api/comments/1`)
+    ]).then((all) => {
+      const commentsFromAxios = [];
+      all[0].data.forEach((commentFetch) => {
+        const objectForComment = {}
+        const {id, first_name, last_name, created_at, avatar, content} = commentFetch;
+        objectForComment.id = id;
+        objectForComment.name = `${first_name} ${last_name}`; 
+        objectForComment.avatar = avatar; 
+        objectForComment.time = created_at;
+        objectForComment.content = content;
+        commentsFromAxios.push(objectForComment)
+      })
+      setComments( commentsFromAxios);
+    });
+  }, [])
 
   const [showComments, setShowComments] = useState(true);
   const switchCommentShow = () => setShowComments(showComments ? false : true);
@@ -79,27 +77,31 @@ export default function Post(props) {
         <div className="post--footer--left">
           <span className="post--user--avatar"></span>
           <form
+          className='form-inline'
             onSubmit={(event) => {
               event.preventDefault();
               submitComment();
             }}
           >
-            <input
-              type="text"
-              placeholder="Wite a comment..."
-              onChange={(event) => setComment(event.target.value)}
-              value={comment}
-            />
-            <button type="submit">submit</button>
+              <input
+                type="text"
+                className="form-control mb-2 mr-sm-2"
+                id="submitNewComment"
+                aria-describedby="newComment"
+                placeholder="Wite a comment..."
+                onChange={(event) => setComment(event.target.value)}
+                value={comment}
+              />
+              <button className="btn btn-m btn-outline-success" type="submit">submit</button>
           </form>
         </div>
 
         <span className="post--actions">
-          <span>
+          <span className='hover'>
             <i className="far fa-thumbs-up"></i>7
           </span>
-          <span onClick={switchCommentShow}>
-            <i className="far fa-comments"></i>6
+          <span className='hover' onClick={switchCommentShow}>
+            <i className="far fa-comments"></i>{comments.length}
           </span>
         </span>
       </footer>
