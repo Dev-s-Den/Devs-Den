@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 
 // Styles
@@ -6,26 +6,26 @@ import "./Styles/Forum.scss";
 
 // Components
 import Post from "./Post.jsx";
+import MakePost from "./MakePost.jsx";
 
 export default function Forum(props) {
-
-  const [isLoading, setLoading] = useState(true)
-  const [posts, setPosts] = useState([])
-  const [banner, setBanner] = useState([])
+  const [isLoading, setLoading] = useState(true);
+  const [posts, setPosts] = useState([]);
+  const [banner, setBanner] = useState([]);
 
   useEffect(() => {
     Promise.all([
       axios.get(`/api/forums/${props.forum_id}`),
-      axios.get(`/api/posts/${props.forum_id}`)
+      axios.get(`/api/posts/${props.forum_id}`),
     ]).then((data) => {
       setPosts(data[1].data);
-      setBanner(data[0].data)
-      setLoading(false)
+      setBanner(data[0].data);
+      setLoading(false);
     });
-  }, [props.forum_id])
+  }, [props.forum_id]);
 
   if (isLoading) {
-    return <div>LOADING...</div> 
+    return <div>LOADING...</div>;
   }
 
   return (
@@ -44,6 +44,7 @@ export default function Forum(props) {
       </div>
 
       <div className="forum-postContainer">
+        <MakePost />
         {posts.map(function (postdata) {
           return <Post key={postdata.id} {...postdata} />;
         })}
