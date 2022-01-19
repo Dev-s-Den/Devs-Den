@@ -25,7 +25,7 @@ export default function MakePost(props) {
             className="make-post-input"
             placeholder="    Write a post"
           ></textarea>
-          <button type="submit" className="btn btn-lg btn-outline-dark">
+          <button type="submit" className="btn btn-lg btn-success">
             Post
             <ion-icon name="send-outline"></ion-icon>
           </button>
