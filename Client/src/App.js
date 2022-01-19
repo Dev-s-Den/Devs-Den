@@ -19,10 +19,10 @@ function App() {
 
   const [forum, setForum] = useState(0)
 
-  const [user, setUser] = useState({})
+  const [user, setUser] = useState({user_id:"", avatar: "", first_name: "", last_name: "", email: "", github_url: ""})
 
   useEffect(() => {
-    axios.get("/api/users/checkLogin")
+    axios.get("/api/users/login")
     .then((data)=> {
       setUser(data.data)
     })
@@ -35,10 +35,12 @@ function App() {
   return (
     <div className="App">
       
-      <NavBar setUser={setUser} value={value} setValue={setValue} />
+      <NavBar user={user} setUser={setUser} value={value} setValue={setValue} />
       <ForumNavBar setForum={setForum} />
       {!(forum === 0) && (<Forum forum_id={forum} />)}
       {(forum === 0) && (<p>HOMEPAGE</p>)}
+      {(user.user_id==="") && (<p> NOT LOGGED IN</p>)}
+      {!(user.user_id==="") && (<p>  LOGGED IN</p>)}
       <Chat show={showModal} closeModal={() => setShowModal(false)} />
       <button className='messaging-bar' onClick={() => setShowModal(true)}>
         <div className="messaging-bar-avatar-container">
