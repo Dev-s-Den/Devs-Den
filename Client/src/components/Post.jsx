@@ -8,44 +8,25 @@ import "./Styles/Post.scss";
 import Comment from "./Comment.jsx";
 
 export default function Post(props) {
+  console.log(props);
   // States
   const [comments, setComments] = useState([]);
 
   useEffect(() => {
 
     Promise.all([
-      axios.get(`/api/comments/1`)
+      axios.get(`/api/comments/${props.id}`)
     ]).then((all) => {
-      const commentsFromAxios = [];
-      all[0].data.forEach((commentFetch) => {
-        const objectForComment = {}
-        const {id, first_name, last_name, created_at, avatar, content} = commentFetch;
-        objectForComment.id = id;
-        objectForComment.name = `${first_name} ${last_name}`; 
-        objectForComment.avatar = avatar; 
-        objectForComment.time = created_at;
-        objectForComment.content = content;
-        commentsFromAxios.push(objectForComment)
-      })
-      setComments( commentsFromAxios);
+      setComments( all[0].data);
     });
   }, [])
 
-  const [showComments, setShowComments] = useState(true);
+  const [showComments, setShowComments] = useState(false);
   const switchCommentShow = () => setShowComments(showComments ? false : true);
 
   const [comment, setComment] = useState("");
   const submitComment = () => {
-    setComments((prev) => [
-      ...prev,
-      {
-        id: 4,
-        avatar: "blank",
-        name: "CURRENT USER",
-        time: "9:55",
-        content: comment,
-      },
-    ]);
+    setComments(prev => [...prev, comment]);
     setComment("");
   };
 
@@ -53,11 +34,11 @@ export default function Post(props) {
     <div className="post">
       <header className="post--header">
         <div className="post--header--left">
-          <span className="post--avatar"></span>
-          <h2 className="post--name">{props.name}</h2>
+          <img className="post--avatar" src={`${props.avatar}`} alt="user-avatar"/>
+          <h2 className="post--name">{props.first_name}</h2>
         </div>
         <div className="post--header--left">
-          <small className="post--Time">{props.time}</small>
+          <small className="post--Time">{props.created_at}</small>
         </div>
       </header>
 

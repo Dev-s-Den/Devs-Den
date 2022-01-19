@@ -2,7 +2,7 @@ const dbConnection = require('../connection');
 
 const getComments = async (post_id) => {
   const values = post_id;
-  const query = 'SELECT comments.id, first_name, last_name, comments.created_at, avatar, comments.content FROM posts JOIN comments ON posts.user_id = comments.user_id JOIN users ON users.id = comments.user_id WHERE post_id = $1;'
+  const query = 'SELECT comments.id, first_name, last_name, comments.created_at, avatar, comments.content FROM comments JOIN users ON users.id = comments.user_id WHERE post_id =$1;'
 
 
   try {
