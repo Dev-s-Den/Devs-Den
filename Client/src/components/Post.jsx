@@ -10,7 +10,11 @@ import Comment from "./Comment.jsx";
 export default function Post(props) {
   // States
   const [comments, setComments] = useState([]);
+  
+  const [showComments, setShowComments] = useState(false);
 
+  const [comment, setComment] = useState("");
+//loads comments 
   useEffect(() => {
 
     Promise.all([
@@ -18,16 +22,30 @@ export default function Post(props) {
     ]).then((all) => {
       setComments( all[0].data);
     });
-  }, [])
-
-  const [showComments, setShowComments] = useState(false);
+  }, [props.reFetchPosts])
+// functions 
   const switchCommentShow = () => setShowComments(showComments ? false : true);
 
-  const [comment, setComment] = useState("");
-  const submitComment = () => {
-    setComments(prev => [...prev, comment]);
-    setComment("");
+  const handleChange = (e) => {
+    const {name, value} = e.target
+    if (!props.user.user_id) {
+      setComment({...comment, [name]:value})
+    }
+    setComment({post_id: props.id,user_id: props.user.user_id, [name]:value});
+  }  
+
+  const submitComment = function(e) {
+    e.preventDefault();
+    if (!props.user.user_id) {
+      return console.log('empty')
+    } 
+    Promise.all([
+      axios.post(`/api/comments/${props.id}`, comment)
+    ]).then(data => {
+      props.reFetchPosts();
+    })
   };
+
 
 
   return (
@@ -58,22 +76,17 @@ export default function Post(props) {
 
       <footer className="post--footer">
         <div className="post--footer--left">
-          <img className="post--user--avatar"/>
+          <img src={props.user.avatar} className="post--user--avatar"/>
           <form
-          className='new-comment'
-            onSubmit={(event) => {
-              event.preventDefault();
-              submitComment();
-            }}
+            onSubmit={submitComment}
+            className='new-comment'
           >
               <input
+                name="content"
                 type="text"
                 className="new-comment-input"
-                id="submitNewComment"
-  
                 placeholder="Wite a comment..."
-                onChange={(event) => setComment(event.target.value)}
-                value={comment}
+                onChange={handleChange}
               />
               <button className="btn btn-m btn-success" type="submit">Submit</button>
           </form>
