@@ -13,26 +13,38 @@ export default function Post(props) {
   const [showComments, setShowComments] = useState(false);
   const [comment, setComment] = useState("");
 
+  //loads comments
   useEffect(() => {
-    Promise.all([
-      axios.get(`/api/comments/${props.id}`),
-      axios.post(`api/comments/${props.id}`),
-    ]).then((all) => {
+    Promise.all([axios.get(`/api/comments/${props.id}`)]).then((all) => {
       setComments(all[0].data);
     });
-  }, []);
+  }, [props.reFetchPosts]);
 
+  // functions
   const switchCommentShow = () => setShowComments(showComments ? false : true);
-  const submitComment = () => {
-    setComments((prev) => [
-      ...prev,
-      {
-        user_id: props.user_id,
-        post_id: props.id,
-        content: comment,
-      },
-    ]);
-    setComment("");
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    if (!props.user_id) {
+      setComment({ ...comment, [name]: value });
+    }
+    setComment({
+      post_id: props.id,
+      user_id: props.user.user_id,
+      [name]: value,
+    });
+  };
+
+  const submitComment = function (e) {
+    e.preventDefault();
+    if (!props.user.user_id) {
+      return console.log("empty");
+    }
+    axios.post(`/api/comments/${props.id}`, comment).then(() => {
+      axios.get(`/api/comments/${props.id}`).then((data) => {
+        setComments(data.data);
+      });
+    });
   };
 
   return (
@@ -65,21 +77,18 @@ export default function Post(props) {
 
       <footer className="post--footer">
         <div className="post--footer--left">
-          <img className="post--user--avatar" />
-          <form
-            className="new-comment"
-            onSubmit={(event) => {
-              event.preventDefault();
-              submitComment();
-            }}
-          >
+          <img
+            src={props.avatar}
+            className="post--user--avatar"
+            alt="user-avatar"
+          />
+          <form onSubmit={submitComment} className="new-comment">
             <input
+              name="content"
               type="text"
               className="new-comment-input"
-              id="submitNewComment"
               placeholder="Wite a comment..."
-              onChange={(event) => setComment(event.target.value)}
-              value={comment}
+              onChange={handleChange}
             />
             <button className="btn btn-m btn-success" type="submit">
               Submit

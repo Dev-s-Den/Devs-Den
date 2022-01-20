@@ -1,3 +1,5 @@
+
+
 const express = require('express');
 const router = express.Router();
 const { getUsers, addUsers, checkUser } = require('../db/queries/users');
@@ -9,9 +11,12 @@ module.exports = () => {
   })
 
   router.post('/', (req, res) => {
+    let avatar = `https://avatars.dicebear.com/api/bottts/${req.body.email}.svg`
     const hashPassword = bcrypt.hashSync(req.body.password, 10)
-    addUsers(req.body.avatar, req.body.first_name, req.body.last_name, req.body.email, hashPassword, req.body.github_url)
-      .then(data => res.json(data))
+    addUsers(avatar, req.body.first_name, req.body.last_name, req.body.email, hashPassword, req.body.github_url)
+      .then(data => {
+        res.send({cookie: req.session.email = data[0].email, user_id: data[0].id, avatar: data[0].avatar, first_name: data[0].first_name, last_name: data[0].last_name, email: data[0].email, github_url: data[0].github_url })
+      })
   })
 
   router.post('/login', (req, res) => {

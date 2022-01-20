@@ -63,17 +63,15 @@
 
 .messaging-bar:hover{
   color:rgb(28, 193, 176);
-
 }
 
 .messaging-bar-avatar{
   height: 32px;
-  width: 32px;
   background-color: #bbb;
   border-radius: 50%;
   border: 3px solid #2354bd;
   display: inline-block;
-  padding: 10px;
+  
 }
 
 .messaging-bar-avatar-container{

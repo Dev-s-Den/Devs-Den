@@ -26,6 +26,12 @@ export default function Forum(props) {
       .catch((err) => console.error(err.message));
   }, [props.forum_id]);
 
+  const reFetchPosts = () => {
+    axios
+      .get(`/api/posts/${props.forum_id}`)
+      .then((data) => setPosts(data.data));
+  };
+
   if (isLoading) {
     return <div>LOADING...</div>;
   }
@@ -46,9 +52,25 @@ export default function Forum(props) {
       </div>
 
       <div className="forum-postContainer">
-        <MakePost />
+        {!props.user.user_id && (
+          <MakePost forum_id={props.forum_id} user={props.user} />
+        )}
+        {props.user.user_id && (
+          <MakePost
+            reFetchPosts={reFetchPosts}
+            forum_id={props.forum_id}
+            user={props.user}
+          />
+        )}
         {posts.map(function (postdata) {
-          return <Post key={postdata.id} {...postdata} />;
+          return (
+            <Post
+              reFetchPosts={reFetchPosts}
+              key={postdata.id}
+              {...postdata}
+              user={props.user}
+            />
+          );
         })}
       </div>
     </section>

@@ -90,7 +90,10 @@ export default function Navbar(props) {
           </div>
           <div className="clear" onClick={() => props.setValue("")}></div>
         </div>
-
+        {!(props.user.user_id==="") && (<div className="nav-userInfo">
+          <img className= "nav-avatar"src={props.user.avatar} alt ="user avatar"/>
+          <h1>{props.user.first_name} {props.user.last_name}</h1>
+        </div>)}
        {(props.user.user_id==="") && ( <ul className="nav navbar-nav navbar-right">
           <button
             className="btn btn-lg btn-outline-success"
