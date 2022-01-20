@@ -5,6 +5,7 @@ import React, { useState, useEffect } from 'react';
 import NavBar from './components/NavBar';
 import ForumNavBar from './components/ForumNavBar';
 import Forum from './components/Forum';
+import Post from './components/Post';
 import Chat from './components/Chat';
 
 // Styles
@@ -19,16 +20,21 @@ function App() {
   const [showModal, setShowModal] = useState(false);
   const [forum, setForum] = useState(0);
   const [user, setUser] = useState(userObj);
+  const [posts, setPosts] = useState([]);
 
   useEffect(() => {
-    axios.get("/api/users/login")
+    Promise.all([
+      axios.get("/api/users/login"),
+      axios.get("/api/home")
+    ])
       .then((data) => {
-        setUser(data.data);
+        setUser(data[0].data);
+        setPosts(data[1].data);
       })
       .catch((e) => {
         console.error(e.message);
       })
-  }, [])
+  }, []);
 
   return (
     <div className="App">
@@ -36,6 +42,9 @@ function App() {
       <ForumNavBar setForum={setForum} />
       {!(forum === 0) && (<Forum forum_id={forum} />)}
       {(forum === 0) && (<p>HOMEPAGE</p>)}
+      {posts && posts.map(post => {
+        return <Post key={post.id} {...post} />
+      })}
       {(user.user_id === "") && (<p> NOT LOGGED IN</p>)}
       {!(user.user_id === "") && (<p>  LOGGED IN</p>)}
       <Chat show={showModal} closeModal={() => setShowModal(false)} />

@@ -17,11 +17,13 @@ export default function Forum(props) {
     Promise.all([
       axios.get(`/api/forums/${props.forum_id}`),
       axios.get(`/api/posts/${props.forum_id}`),
-    ]).then((data) => {
-      setPosts(data[1].data);
-      setBanner(data[0].data);
-      setLoading(false);
-    });
+    ])
+      .then((data) => {
+        setPosts(data[1].data);
+        setBanner(data[0].data);
+        setLoading(false);
+      })
+      .catch((err) => console.error(err.message));
   }, [props.forum_id]);
 
   if (isLoading) {
