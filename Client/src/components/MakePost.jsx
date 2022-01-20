@@ -6,6 +6,7 @@ import "./Styles/MakePost.scss";
 
 export default function MakePost(props) {
   const [formNewPost, setformNewPost] = useState({});
+  const [alert, setAlert] = useState({ display: "none", disabled: false });
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -23,9 +24,11 @@ export default function MakePost(props) {
   const submit = function (e) {
     e.preventDefault();
     if (!props.user.user_id) {
+      setAlert({ display: "flex", disabled: true });
       return console.log("empty");
     }
-    axios.post(`/api/posts/${props.forum_id}`, formNewPost).then((data) => {
+    axios.post(`/api/posts/${props.forum_id}`, formNewPost).then(() => {
+      setAlert({ display: "none", disabled: false });
       props.reFetchPosts();
     });
   };
@@ -50,6 +53,7 @@ export default function MakePost(props) {
       <div className="body">
         <form onSubmit={submit} className="make-post-form">
           <textarea
+            disabled={alert.disabled}
             onChange={handleChange}
             name="content"
             rows="4"
@@ -61,6 +65,13 @@ export default function MakePost(props) {
             Post
             <ion-icon name="send-outline"></ion-icon>
           </button>
+          <div
+            className="alert alert-danger"
+            role="alert"
+            style={{ display: alert.display }}
+          >
+            Please login before attempting to post
+          </div>
         </form>
       </div>
     </section>
