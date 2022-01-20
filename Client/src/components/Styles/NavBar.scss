@@ -1,4 +1,6 @@
 .navbar {
+  display: flex;
+  justify-content: space-between;
   .padding {
     display: flex;
     justify-content: center;
@@ -111,20 +113,19 @@
   }
 }
 
-.nav-avatar{
-  height:45px;
+.nav-avatar {
+  height: 45px;
   border: 3px solid blue;
   border-radius: 100%;
   margin-right: 20px;
 }
 
-
-.nav-userInfo{
+.nav-userInfo {
   display: flex;
   justify-content: center;
   align-items: center;
   margin-right: 40px;
-  h1{
+  h1 {
     font-size: 25px;
     margin: 0;
     background: -webkit-linear-gradient(#39ff27, #0b6fbb);
