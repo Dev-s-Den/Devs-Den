@@ -15,11 +15,23 @@ export default function SigninSignup(props) {
 
   const handleSubmit = (event) => {
     event.preventDefault()
-    Promise.all([
-      axios.post('/api/users', formData),
-    ]).then(data => {
-      console.log(data)
-      props.setUser(data[0].data)
+    
+      axios.post('/api/users', formData)
+      .then(data => {
+        console.log(data)
+        axios.post('https://api.chatengine.io/users/', 
+          {
+          username: formData.email,
+          first_name: formData.first_name,
+          last_name: formData.last_name,
+          secret: data.data.chat_engine_secret
+          }, 
+          {
+            headers: {'PRIVATE-KEY': process.env.REACT_APP_chatPrivateKey}
+          }
+        )
+
+      props.setUser(data.data)
     })
   }
   const handleChange = (event) => {

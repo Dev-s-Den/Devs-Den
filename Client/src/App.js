@@ -13,7 +13,7 @@ import './App.css';
 import axios from 'axios';
 
 function App() {
-  const userObj = { user_id: "", avatar: "", first_name: "", last_name: "", email: "", github_url: "" };
+  const userObj = { user_id: "", avatar: "", first_name: "", last_name: "", email: "", github_url: "", chat_engine_secret: "" };
 
   // States
   const [value, setValue] = useState("");
