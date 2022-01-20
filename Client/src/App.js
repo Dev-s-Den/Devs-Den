@@ -19,7 +19,7 @@ function App() {
 
   const [forum, setForum] = useState(0)
 
-  const [user, setUser] = useState({ user_id: "", avatar: "", first_name: "", last_name: "", email: "", github_url: "" })
+  const [user, setUser] = useState({ user_id: "", avatar: "", first_name: "", last_name: "", email: "", github_url: "", chat_engine_secret: "" })
 
   useEffect(() => {
     axios.get("/api/users/login")
