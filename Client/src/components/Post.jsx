@@ -12,6 +12,7 @@ export default function Post(props) {
   const [comments, setComments] = useState([]);
   const [showComments, setShowComments] = useState(false);
   const [comment, setComment] = useState("");
+  const [like, setLike] = useState(props.likes)
 
   //loads comments
   useEffect(() => {
@@ -47,6 +48,18 @@ export default function Post(props) {
     });
   };
 
+  const updateLike = function (e) {
+    e.preventDefault();
+    if (!props.user.user_id) {
+      return console.log("empty");
+    }
+    axios.put(`/api/posts/${props.id}`, {id: props.id, like: like+1})
+    .then(() => {
+      setLike(prev => { return prev + 1});
+      props.reFetchPosts();
+      });
+  };
+
   return (
     <div className="post">
       <header className="post--header">
@@ -78,7 +91,9 @@ export default function Post(props) {
       <footer className="post--footer">
         <div className="post--footer--left">
           <img
-            src={props.avatar}
+            src={ !props.user.avatar
+              ? "https://i.imgur.com/WxNkK7J.png"
+              : props.user.avatar}
             className="post--user--avatar"
             alt="user-avatar"
           />
@@ -96,9 +111,9 @@ export default function Post(props) {
           </form>
         </div>
 
-        <span className="post--actions">
-          <span className="hover">
-            <i className="far fa-thumbs-up"></i>7
+        <span className="post--actions" >
+          <span className="hover" onClick={updateLike}>
+            <i className="far fa-thumbs-up"></i>{`${like}`}
           </span>
           <span className="hover" onClick={switchCommentShow}>
             <i className="far fa-comments"></i>
