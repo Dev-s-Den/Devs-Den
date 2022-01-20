@@ -24,7 +24,7 @@ export default function SigninSignup(props) {
           username: formData.email,
           first_name: formData.first_name,
           last_name: formData.last_name,
-          secret: 'fromdata'
+          secret: data.data.chat_engine_secret
           }, 
           {
             headers: {'PRIVATE-KEY': process.env.REACT_APP_chatPrivateKey}
