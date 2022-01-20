@@ -21,9 +21,8 @@ export default function MakePost(props) {
     if (!props.user.user_id) {
       return console.log('empty')
     } 
-    Promise.all([
-      axios.post(`/api/posts/${props.forum_id}`, formNewPost),
-    ]).then(data => {
+      axios.post(`/api/posts/${props.forum_id}`, formNewPost)
+      .then(data => {
       props.reFetchPosts()
     })
   }

@@ -8,6 +8,8 @@ import "./Styles/Post.scss";
 import Comment from "./Comment.jsx";
 
 export default function Post(props) {
+
+  console.log(props);
   // States
   const [comments, setComments] = useState([]);
   
@@ -39,10 +41,13 @@ export default function Post(props) {
     if (!props.user.user_id) {
       return console.log('empty')
     } 
-    Promise.all([
       axios.post(`/api/comments/${props.id}`, comment)
-    ]).then(data => {
-      props.reFetchPosts();
+      .then(data => {
+      axios.get(`/api/comments/${props.id}`)
+      .then(data => {
+        console.log(data);
+        setComments( data.data)
+      })
     })
   };
 
