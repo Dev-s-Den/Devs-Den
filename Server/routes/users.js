@@ -28,7 +28,7 @@ module.exports = () => {
     const hashPassword = bcrypt.hashSync(req.body.password, 10)
     addUsers(avatar, req.body.first_name, req.body.last_name, req.body.email, makeid(16), hashPassword, req.body.github_url)
       .then(data => {
-        res.send({cookie: req.session.email = data[0].email, user_id: data[0].id, avatar: data[0].avatar, first_name: data[0].first_name, last_name: data[0].last_name, email: data[0].email, github_url: data[0].github_url })
+        res.send({cookie: req.session.email = data[0].email, user_id: data[0].id, avatar: data[0].avatar, first_name: data[0].first_name, last_name: data[0].last_name, email: data[0].email, chat_engine_secret: data[0].chat_engine_secret , github_url: data[0].github_url })
       })
   })
 
@@ -38,7 +38,7 @@ module.exports = () => {
         if (!bcrypt.compareSync(req.body.password, data[0].password)) {
           return res.send('Incorrect credentials').status(403);
         }
-        res.send({cookie: req.session.email = data[0].email, user_id: data[0].id, avatar: data[0].avatar, first_name: data[0].first_name, last_name: data[0].last_name, email: data[0].email, github_url: data[0].github_url })
+        res.send({cookie: req.session.email = data[0].email, user_id: data[0].id, avatar: data[0].avatar, first_name: data[0].first_name, last_name: data[0].last_name, email: data[0].email,chat_engine_secret: data[0].chat_engine_secret, github_url: data[0].github_url })
       })
   })
 
