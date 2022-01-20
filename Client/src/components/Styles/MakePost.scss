@@ -69,29 +69,33 @@
         height: 70%;
         padding: 0.7em;
         border: none;
+        outline: none;
         overflow: none;
         resize: none;
         border-radius: 15px;
-        background-color: rgb(90, 90, 90);
-        color: rgb(175, 175, 175);
+        background-color: rgb(20, 20, 20, 0.7);
+        color: rgb(255, 255, 255);
+        font-family: "Fira Code", monospace;
         font-size: 1rem;
         font-weight: 400;
-      }
-
-      .make-post-input:hover {
-        box-shadow: inset 4.5px 4.5px 4.5px 4.5px rgba(40, 40, 40, 0.1);
+        caret-color: rgb(33, 233, 63);
       }
 
       .make-post-input:focus {
-        box-shadow: inset 4.5px 4.5px 4.5px 4.5px rgba(40, 40, 40, 0.1);
-        background-color: rgb(145, 145, 145);
-        color: rgb(70, 70, 70);
+        box-shadow: 0px 0px 10.5px 10.5px rgba(0, 0, 0, 0.4);
+        background-color: rgb(20, 20, 20, 0.8);
+        color: rgb(255, 255, 255, 0.8);
+        animation: typing 1.5s;
       }
 
       .make-post-input::placeholder {
-        color: rgb(170, 170, 170);
+        color: rgb(170, 170, 170, 0.5);
         font-size: 1.7em;
-        padding: 20px;
+        padding: 10px;
+      }
+
+      .make-post-input:focus::placeholder {
+        color: rgb(170, 170, 170, 0.1);
       }
 
       .btn {
@@ -108,5 +112,36 @@
         );
       }
     }
+  }
+}
+
+#body {
+  margin: 0px;
+  padding: 0px;
+  height: 99%;
+
+  textarea#setter {
+    left: -1000px;
+    position: absolute;
+  }
+
+  .cursor {
+    font-size: 12px;
+    background-color: black;
+    color: black;
+    position: relative;
+  }
+  #terminal {
+    margin: 8px;
+    cursor: text;
+    height: 500px;
+    overflow: auto;
+  }
+  #writer {
+    font-family: cursor, courier;
+    font-weight: bold;
+  }
+  #getter {
+    margin: 5px;
   }
 }
