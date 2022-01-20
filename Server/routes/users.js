@@ -14,7 +14,7 @@ module.exports = () => {
   })
 
   router.post('/', (req, res) => {
-    let avatar = `https://avatars.dicebear.com/api/micah/${req.body.email}.svg`
+    let avatar = `https://avatars.dicebear.com/api/bottts/${req.body.email}.svg`
     const hashPassword = bcrypt.hashSync(req.body.password, 10)
     addUsers(avatar, req.body.first_name, req.body.last_name, req.body.email, hashPassword, req.body.github_url)
       .then(data => {
