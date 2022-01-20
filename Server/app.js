@@ -4,14 +4,13 @@ const path = require('path');
 const cookieSession = require('cookie-session');
 const logger = require('morgan');
 
+const homeRouter = require('./routes/home');
 const usersRouter = require('./routes/users');
 const commentsRouter = require('./routes/comments');
 const postsRouter = require('./routes/posts');
 const forumsRouter = require('./routes/forums');
 
 const app = express();
-
-
 
 app.use(logger('dev'));
 app.use(express.json());
@@ -22,6 +21,7 @@ app.use(cookieSession({
 }));
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.use('/api/home', homeRouter());
 app.use('/api/users', usersRouter());
 app.use('/api/comments', commentsRouter());
 app.use('/api/posts', postsRouter());
