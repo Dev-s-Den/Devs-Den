@@ -11,10 +11,10 @@ const getUsers = async (email) => {
   }
 }
 
-const addUsers = async (avatar, first_name, last_name, email, password, github_url) => {
+const addUsers = async (avatar, first_name, last_name, email, chat_engine_secret, password, github_url) => {
   const values = [avatar, first_name, last_name, email, chat_engine_secret, password, github_url];
   try {
-    const data = await dbConnection.query('INSERT INTO users (avatar, first_name, last_name, email, password, github_url) VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING *;', values);
+    const data = await dbConnection.query('INSERT INTO users (avatar, first_name, last_name, email, chat_engine_secret,password, github_url) VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING *;', values);
     return data.rows;
   } catch (err) {
     console.error(err.message);
