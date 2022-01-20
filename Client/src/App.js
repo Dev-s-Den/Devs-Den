@@ -39,15 +39,13 @@ function App() {
       <ForumNavBar setForum={setForum} />
       {!(forum === 0) && (<Forum forum_id={forum} />)}
       {(forum === 0) && (<p>HOMEPAGE</p>)}
-      {(user.user_id==="") && (<p> NOT LOGGED IN</p>)}
-      {!(user.user_id==="") && (<p>  LOGGED IN</p>)}
-      <Chat show={showModal} closeModal={() => setShowModal(false)} />
-      <button className='messaging-bar' onClick={() => setShowModal(true)}>
+      {!(user.user_id==="") && (<Chat user = {user} show={showModal} closeModal={() => setShowModal(false)} />)}
+      {!(user.user_id==="") && (<button className='messaging-bar' onClick={() => setShowModal(true)}>
         <div className="messaging-bar-avatar-container">
-          <span className="messaging-bar-avatar"></span>
+          <img className= "messaging-bar-avatar" src={user.avatar} alt="user avatar" />
         </div>
         <p>Messaging</p>
-      </button>
+      </button>)}
     </div>
   );
 }
