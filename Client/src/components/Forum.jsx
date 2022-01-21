@@ -38,11 +38,6 @@ export default function Forum(props) {
 
   return (
     <section>
-      <div className="forum-name">
-        <h1>
-          <em>{banner[0].title}</em>
-        </h1>
-      </div>
       <div>
         <img
           className="forum-banner"
