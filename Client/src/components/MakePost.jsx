@@ -12,12 +12,10 @@ export default function MakePost(props) {
   const handleChange = (event) => {
     const { name, value } = event.target;
     if (name === "img") {
-      console.log("ARE WE HITTING THIS LINE %%%%%%%%%%%%%%%")
       setformNewPost({ ...formNewPost, [name]: event.target.files[0] })
     } else {
       setformNewPost({ ...formNewPost, [name]: value });
     }
-    console.log("HELLO THIS IS NE -------", formNewPost)
   };
 
   const submit = function (e) {
@@ -27,59 +25,41 @@ export default function MakePost(props) {
       setTimeout(() => {
         setAlert({ disabled: true, display: "none" });
       }, 5000);
-      setformNewPost({ ...formNewPost, content: "", img:"null" });
+      setformNewPost({ ...formNewPost, content: "", img: "null" });
 
     } else {
-      if (formNewPost.img !== null){
+      if (formNewPost.img !== null) {
         let bodyFormData = new FormData()
-        console.log("=================",formNewPost.img)
-        bodyFormData.append("image",formNewPost.img)
-        console.log(bodyFormData)
+        bodyFormData.append("image", formNewPost.img)
 
         const options = {
           method: 'POST',
-        url: 'https://imgur-apiv3.p.rapidapi.com/3/image',
-        headers: {
-          'content-type': 'application/x-www-form-urlencoded',
-          authorization: `Client-ID ${process.env.REACT_APP_IMGRU_KEY}`,
-          'x-rapidapi-host': 'imgur-apiv3.p.rapidapi.com',
-          'x-rapidapi-key': process.env.REACT_APP_RAPID_KEY
-        },
-        data: bodyFormData
-      };
+          url: 'https://imgur-apiv3.p.rapidapi.com/3/image',
+          headers: {
+            'content-type': 'application/x-www-form-urlencoded',
+            authorization: `Client-ID ${process.env.REACT_APP_IMGRU_KEY}`,
+            'x-rapidapi-host': 'imgur-apiv3.p.rapidapi.com',
+            'x-rapidapi-key': process.env.REACT_APP_RAPID_KEY
+          },
+          data: bodyFormData
+        };
 
-      axios.request(options).then(function (response) {
-        console.log(response.data);
-      }).catch(function (error) {
-        console.error(error);
-      });
+        axios.request(options)
+          .then((data) => {
+            axios.post(`/api/posts/${props.forum_id}`, { ...formNewPost, forum_id: props.forum_id, user_id: props.user.user_id, img: data.data.data.link })
+              .then(() => {
+                setAlert({ display: "none", disabled: false });
+                props.reFetchPosts();
+              });
+          }).catch(function (error) {
+            console.error(error);
+          });
 
-
-
-
-
-
-
-        // const config = {
-        //   headers: {
-        //     Authorization: "process.env.REACT_APP_IMGRU_KEY",
-        //   },
-        // };
-        // axios.post("https://api.imgur.com/3/image", bodyFormData, config)
-
-        // axios({
-        //   method: "post",
-        //   url: 'https://api.imgur.com/3/image',
-        //   data: bodyFormData,
-        //   headers: { "Authorization": "" },
-        // }).then((data)=> console.log("THITS ISI IS TETSTST",data))
-        // .catch((e)=>console.log(e))
       }
-      console.log("THIS IS ANOTHER TEST",formNewPost)
-      // axios.post(`/api/posts/${props.forum_id}`, { ...formNewPost, forum_id: props.forum_id, user_id: props.user.user_id }).then(() => {
-      //   setAlert({ display: "none", disabled: false });
-      //   props.reFetchPosts();
-      // });
+      axios.post(`/api/posts/${props.forum_id}`, { ...formNewPost, forum_id: props.forum_id, user_id: props.user.user_id }).then(() => {
+        setAlert({ display: "none", disabled: false });
+        props.reFetchPosts();
+      });
     }
   };
 
@@ -114,7 +94,7 @@ export default function MakePost(props) {
           ></textarea>
 
           <div>
-            <input onChange={handleChange}  name="img" type="file" />
+            <input onChange={handleChange} name="img" type="file" />
           </div>
 
           <button type="submit" className="btn btn-lg btn-success">
