@@ -21,8 +21,7 @@ export default function Navbar(props) {
   return (
     <nav
       className="navbar navbar-expand-lg navbar-dark py-1"
-      style={{ backgroundColor: "#222" }}
-    >
+      id = "primarynav"   >
       <a className="navbar-brand" href="#">
         <img
           src="https://i.imgur.com/fuOFQoH.png"
