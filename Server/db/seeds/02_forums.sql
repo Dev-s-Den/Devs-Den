@@ -1,5 +1,10 @@
 INSERT INTO forums ( title, img, logo)
  VALUES 
-       ('Javascript', 'https://getflywheel.com/layout/wp-content/uploads/2019/02/The_Best_Java_Script_Libraries_1800x500-1-1568x436.jpg', 'https://symbols.getvecta.com/stencil_25/39_javascript.0ca26ec4ab.svg'),
-        ('C++','http://www.techsystemsnetwork.com/Content/images/banner-52.jpg','https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/ISO_C%2B%2B_Logo.svg/120px-ISO_C%2B%2B_Logo.svg.png');
+      ('Javascript', 'https://i.imgur.com/lfInatk.png', 'https://i.imgur.com/kf32mzs.png'),
+      ('C++','https://i.imgur.com/sl02Ly4.jpg','https://i.imgur.com/LvuvZnu.png'),
+      ('Ruby','https://i.imgur.com/NDmvnHb.jpg','https://i.imgur.com/rjcFlKo.png'),
+      ('HTML','https://i.imgur.com/VwB7Sfj.gif','https://i.imgur.com/9wc7RSF.png'),
+      ('C#','https://i.imgur.com/n10Zniu.jpg','https://i.imgur.com/Hzdua6v.png?1'),
+      ('Java','https://i.imgur.com/lxJCjow.jpg','https://i.imgur.com/mm8R9GQ.jpg'),
+      ('SQL','https://i.imgur.com/n6qqwLV.png','https://i.imgur.com/RBAYFXp.png');
      
