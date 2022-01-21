@@ -25,6 +25,7 @@ export default function MakePost(props) {
     e.preventDefault();
     if (!props.user.user_id) {
       setAlert({ display: "flex", disabled: true });
+      setformNewPost({ ...formNewPost, content: "" });
       return console.log("empty");
     }
     axios.post(`/api/posts/${props.forum_id}`, formNewPost).then(() => {
@@ -60,6 +61,7 @@ export default function MakePost(props) {
             cols="50"
             className="make-post-input"
             placeholder="    Write a post"
+            value={formNewPost.content}
           ></textarea>
           <button type="submit" className="btn btn-lg btn-success">
             Post
