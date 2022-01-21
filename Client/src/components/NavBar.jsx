@@ -26,12 +26,12 @@ export default function Navbar(props) {
 
   return (
     <nav className="navbar navbar-expand-lg navbar-dark py-1" id="primarynav">
-      <a className="navbar-brand" href="#">
+      <a className="navbar-brand" href="#home">
         <img
           src="https://i.imgur.com/fuOFQoH.png"
-          width="80"
-          height="80"
-          className="d-inline-block align-top"
+          width="70"
+          height="70"
+          className="navbar-logo"
           onClick={props.redirect}
           alt="Dev's Den"
         />
