@@ -7,9 +7,10 @@ import "./Styles/NavBar.scss";
 import { click, logForm } from "../helpers/helper";
 
 export default function Navbar(props) {
+  const {form, setForm} = props
   //States
   const [clicked, setClicked] = useState({ width: "60px" });
-  const [form, setForm] = useState("none");
+
 
   const logout = () => {
     axios.get("/api/users/logout")
@@ -90,7 +91,9 @@ export default function Navbar(props) {
           >
             Login
           </button>
-          <SigninSignup setUser={props.setUser} state={form} />
+          <div ref={props.loginRef}>
+          <SigninSignup  setUser={props.setUser} state={form} />
+          </div >
         </ul>)}
         {!(props.user.user_id==="") && ( <ul className="nav navbar-nav navbar-right">
           <button
