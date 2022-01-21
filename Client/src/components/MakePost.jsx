@@ -55,11 +55,12 @@ export default function MakePost(props) {
             console.error(error);
           });
 
+      } else {
+        axios.post(`/api/posts/${props.forum_id}`, { ...formNewPost, forum_id: props.forum_id, user_id: props.user.user_id }).then(() => {
+          setAlert({ display: "none", disabled: false });
+          props.reFetchPosts();
+        });
       }
-      axios.post(`/api/posts/${props.forum_id}`, { ...formNewPost, forum_id: props.forum_id, user_id: props.user.user_id }).then(() => {
-        setAlert({ display: "none", disabled: false });
-        props.reFetchPosts();
-      });
     }
   };
 
