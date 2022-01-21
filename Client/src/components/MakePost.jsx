@@ -35,13 +35,37 @@ export default function MakePost(props) {
         console.log("=================",formNewPost.img)
         bodyFormData.append("image",formNewPost.img)
         console.log(bodyFormData)
-        const config = {
-          headers: {
-            "Content-type": "application/x-www-form-urlencoded",
-            Authorization: "",
-          },
-        };
-        axios.post("https://api.imgur.com/3/image", bodyFormData, config)
+
+        const options = {
+          method: 'POST',
+        url: 'https://imgur-apiv3.p.rapidapi.com/3/image',
+        headers: {
+          'content-type': 'application/x-www-form-urlencoded',
+          authorization: `Client-ID ${process.env.REACT_APP_IMGRU_KEY}`,
+          'x-rapidapi-host': 'imgur-apiv3.p.rapidapi.com',
+          'x-rapidapi-key': process.env.REACT_APP_RAPID_KEY
+        },
+        data: bodyFormData
+      };
+
+      axios.request(options).then(function (response) {
+        console.log(response.data);
+      }).catch(function (error) {
+        console.error(error);
+      });
+
+
+
+
+
+
+
+        // const config = {
+        //   headers: {
+        //     Authorization: "process.env.REACT_APP_IMGRU_KEY",
+        //   },
+        // };
+        // axios.post("https://api.imgur.com/3/image", bodyFormData, config)
 
         // axios({
         //   method: "post",
