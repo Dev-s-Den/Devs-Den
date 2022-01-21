@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import axios from 'axios'
+import axios from "axios";
 import SigninSignup from "./SigninSignup";
 // Styles
 import "./Styles/NavBar.scss";
@@ -7,27 +7,33 @@ import "./Styles/NavBar.scss";
 import { click, logForm } from "../helpers/helper";
 
 export default function Navbar(props) {
+  const {form, setForm} = props
   //States
   const [clicked, setClicked] = useState({ width: "60px" });
-  const [form, setForm] = useState("none");
+
 
   const logout = () => {
-    axios.get("/api/users/logout")
-    .then(()=> {
-      props.setUser({user_id:"", avatar: "", first_name: "", last_name: "", email: "", github_url: ""})
-    })
-  }
+    axios.get("/api/users/logout").then(() => {
+      props.setUser({
+        user_id: "",
+        avatar: "",
+        first_name: "",
+        last_name: "",
+        email: "",
+        github_url: "",
+      });
+    });
+  };
 
   return (
-    <nav
-      className="navbar navbar-expand-lg navbar-dark py-1"
-      id = "primarynav"   >
-      <a className="navbar-brand" href="#">
+    <nav className="navbar navbar-expand-lg navbar-dark py-1" id="primarynav">
+      <a className="navbar-brand" href="#home">
         <img
           src="https://i.imgur.com/fuOFQoH.png"
-          width="80"
-          height="80"
-          className="d-inline-block align-top"
+          width="70"
+          height="70"
+          className="navbar-logo"
+          onClick={props.redirect}
           alt="Dev's Den"
         />
       </a>
@@ -46,20 +52,13 @@ export default function Navbar(props) {
       <div className="collapse navbar-collapse" id="navbarSupportedContent">
         <ul className="navbar-nav mr-auto">
           <li className="nav-item ">
-          
             <div
               className="dropdown-menu"
               aria-labelledby="navbarDropdownMenuLink"
             >
-              <a className="dropdown-item" href="#">
-      
-              </a>
-              <a className="dropdown-item" href="#">
-   
-              </a>
-              <a className="dropdown-item" href="#">
-        
-              </a>
+              <a className="dropdown-item" href="#"></a>
+              <a className="dropdown-item" href="#"></a>
+              <a className="dropdown-item" href="#"></a>
             </div>
           </li>
         </ul>
@@ -90,7 +89,9 @@ export default function Navbar(props) {
           >
             Login
           </button>
-          <SigninSignup setUser={props.setUser} state={form} />
+          <div ref={props.loginRef}>
+          <SigninSignup  setUser={props.setUser} state={form} />
+          </div >
         </ul>)}
         {!(props.user.user_id==="") && ( <ul className="nav navbar-nav navbar-right">
           <button

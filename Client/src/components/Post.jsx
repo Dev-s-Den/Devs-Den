@@ -56,7 +56,6 @@ export default function Post(props) {
     axios.put(`/api/posts/${props.id}`, {id: props.id, like: like+1})
     .then(() => {
       setLike(prev => { return prev + 1});
-      props.reFetchPosts();
       });
   };
 
@@ -116,10 +115,14 @@ export default function Post(props) {
           <span className="hover" onClick={updateLike}>
             <i className="far fa-thumbs-up"></i>{`${like}`}
           </span>
-          <span className="hover" onClick={switchCommentShow}>
+         {comments.length === 0 && <span className="hover" onClick={null} >
             <i className="far fa-comments"></i>
             {comments.length}
-          </span>
+          </span>}
+         {comments.length > 0 && <span className="hover" onClick={switchCommentShow}>
+            <i className="far fa-comments"></i>
+            {comments.length}
+          </span>}
         </span>
       </footer>
     </div>
