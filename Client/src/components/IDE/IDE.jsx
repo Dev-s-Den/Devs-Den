@@ -24,9 +24,9 @@ export default function IDE(props) {
         </div>
       </div>
       {/* Required Ace Libraries */}
-      <script src="lib/js/src-min/ace.js"></script>
+      {/* <script src="lib/js/src-min/ace.js"></script>
       <script src="lib/js/src-min/mode-javascript.js"></script>
-      <script src="lib/js/src-min/ext-language_tools.js"></script>
+      <script src="lib/js/src-min/ext-language_tools.js"></script> */}
     </>
   );
 }

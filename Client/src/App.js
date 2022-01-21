@@ -66,7 +66,7 @@ function App() {
         </div>
         <p>Messaging</p>
       </button>)}
-      <IDE />
+      {/* <IDE /> */}
       <footer className="footer"></footer>
     </div>
   );
