@@ -46,6 +46,7 @@ function App() {
         </div>
         <p>Messaging</p>
       </button>)}
+      <footer className="footer"></footer>
     </div>
   );
 }
