@@ -27,11 +27,9 @@ export default function Post(props) {
   const handleChange = (e) => {
     const { name, value } = e.target;
     if (!props.user_id) {
-      setComment({ ...comment, [name]: value });
+      setComment({[name]: value });
     }
     setComment({
-      post_id: props.id,
-      user_id: props.user.user_id,
       [name]: value,
     });
   };
@@ -39,10 +37,11 @@ export default function Post(props) {
   const submitComment = function (e) {
     e.preventDefault();
     if (!props.user.user_id) {
-      setComment({ ...comment, content: "" });
+      setComment({ content: "" });
       return console.log("empty");
     }
-    axios.post(`/api/comments/${props.id}`, comment).then(() => {
+    axios.post(`/api/comments/${props.id}`, { post_id: props.id,
+      user_id: props.user.user_id, ...comment}).then(() => {
       axios.get(`/api/comments/${props.id}`).then((data) => {
         setComments(data.data);
         setComment({ content: "" });
