@@ -26,15 +26,15 @@ export default function Post(props) {
 
   // functions
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    if (!props.user_id) {
-      setComment({[name]: value });
-    }
-    setComment({
-      [name]: value,
-    });
-  };
+  // const handleChange = (e) => {
+  //   const { name, value } = e.target;
+  //   if (!props.user_id) {
+  //     setComment({[name]: value });
+  //   }
+  //   setComment({
+  //     [name]: value,
+  //   });
+  // };
 
   const submitComment = function (e) {
     e.preventDefault();
@@ -105,7 +105,7 @@ export default function Post(props) {
               type="text"
               className="new-comment-input"
               placeholder="Wite a comment..."
-              onChange={handleChange}
+              onChange={(e)=> handleChange(e, setComment, props.user_id)}
               value={comment.content}
             />
             <button className="btn btn-m btn-success" type="submit">
