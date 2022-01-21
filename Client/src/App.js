@@ -1,5 +1,10 @@
 // Libraries
 import React, { useState, useEffect, useRef } from 'react';
+import AceEditor from "react-ace";
+import "ace-builds/src-noconflict/mode-javascript";
+import "ace-builds/src-noconflict/theme-monokai";
+import "ace-builds/src-noconflict/theme-twilight";
+import "ace-builds/src-noconflict/ext-language_tools";
 
 // Compnents
 import NavBar from './components/NavBar';
@@ -7,7 +12,6 @@ import ForumNavBar from './components/ForumNavBar';
 import Forum from './components/Forum';
 import Home from './components/Home';
 import Chat from './components/Chat';
-import IDE from './components/IDE/IDE';
 
 // Styles
 import './App.css';
@@ -66,7 +70,20 @@ function App() {
         </div>
         <p>Messaging</p>
       </button>)}
-      {/* <IDE /> */}
+      <AceEditor
+        placeholder="Write some code!"
+        mode="javascript"
+        theme="twilight"
+        name="devsden"
+        // onLoad={this.onLoad}
+        ontSize={14}
+        editorProps={{ $blockScrolling: true }}
+        setOptions={{
+          enableBasicAutocompletion: true,
+          enableLiveAutocompletion: true,
+          enableSnippets: true,
+        }}
+      />
       <footer className="footer"></footer>
     </div>
   );
