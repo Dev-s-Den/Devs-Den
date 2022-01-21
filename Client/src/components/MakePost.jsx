@@ -26,7 +26,7 @@ export default function MakePost(props) {
     if (!props.user.user_id) {
       setAlert({ display: "flex", disabled: true });
       setTimeout(() => {
-        setAlert({ ...alert, display: "none" });
+        setAlert({ disabled: true, display: "none" });
       }, 5000);
       setformNewPost({ ...formNewPost, content: "" });
       return console.log("empty");
