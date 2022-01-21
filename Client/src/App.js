@@ -35,7 +35,7 @@ function App() {
 
   return (
     <div className="App">
-      <NavBar user={user} setUser={setUser} value={value} setValue={setValue} />
+      <NavBar user={user} setUser={setUser} value={value} setValue={setValue} redirect={() => { setForum(0) }} />
       <ForumNavBar setForum={setForum} />
       {!(forum === 0) && (<Forum forum_id={forum} user={user} />)}
       {(forum === 0) && <Home user={user} />}
