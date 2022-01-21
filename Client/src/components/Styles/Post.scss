@@ -1,13 +1,14 @@
 .post {
-  margin: 140px 140px;
+  margin: 20px 140px;
   overflow: auto;
   border-radius: 25px;
-  background-color: grey;
+  //Changed
+  background-color: #242526;
 }
 
 .post--header {
   padding: 8px 20px;
-  background-color: rgb(77, 75, 75);
+  background-color: #3a3b3c;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -39,7 +40,7 @@
 }
 
 .post--Time {
-  color: #c5cbe3;
+  color: #e2e4e9;
   margin-top: 8px;
   font-size: 24px;
   padding: 2px 10px;
@@ -49,6 +50,7 @@
   padding: 10px 20px;
   word-wrap: break-word;
   text-align: left;
+  color: #e2e4e9;
 }
 
 .post--footer {
@@ -130,8 +132,8 @@
     border: none;
     box-shadow: inset 1.5px 1.5px 0px 0px rgb(33, 33, 33, 0.7);
     border-radius: 15px;
-    background-color: rgb(77, 75, 75);
-    color: rgb(145, 145, 145);
+    background-color: #3a3b3c;
+    color: #e2e4e9;
     text-indent: 10px;
     font-weight: 700;
   }

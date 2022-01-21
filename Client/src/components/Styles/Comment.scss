@@ -6,7 +6,7 @@
   .comment--body .comment--text p {
     margin-top: 5px;
     text-align: start;
-    color: #c5cbe3;
+    color: #e2e4e9;
   }
 }
 
@@ -24,7 +24,7 @@
 .comment--body {
   display: flex;
   flex-direction: column;
-  background-color: rgb(77, 75, 75);
+  background-color: #3a3b3c;
   align-items: flex-start;
   padding: 8px;
   margin-left: 20px;
@@ -43,7 +43,7 @@
   .comment--time {
     margin-left: 10px;
     display: flex;
-    color: #c5cbe3;
+    color: #e2e4e9;
     font-weight: 500;
   }
 }
