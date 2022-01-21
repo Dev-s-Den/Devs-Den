@@ -4,8 +4,6 @@ import axios from "axios";
 // Components
 import Post from "./Post";
 
-// Styles
-
 export default function Home(props) {
   // States
   const [posts, setPosts] = useState([]);
@@ -18,7 +16,6 @@ export default function Home(props) {
       })
       .catch((err) => console.error(err.message));
   }, []);
-  console.log(posts);
 
   return (
     <>
