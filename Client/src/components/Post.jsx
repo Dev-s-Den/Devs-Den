@@ -39,11 +39,13 @@ export default function Post(props) {
   const submitComment = function (e) {
     e.preventDefault();
     if (!props.user.user_id) {
+      setComment({ ...comment, content: "" });
       return console.log("empty");
     }
     axios.post(`/api/comments/${props.id}`, comment).then(() => {
       axios.get(`/api/comments/${props.id}`).then((data) => {
         setComments(data.data);
+        setComment({ content: "" });
       });
     });
   };
@@ -103,6 +105,7 @@ export default function Post(props) {
               className="new-comment-input"
               placeholder="Wite a comment..."
               onChange={handleChange}
+              value={comment.content}
             />
             <button className="btn btn-m btn-success" type="submit">
               Submit
