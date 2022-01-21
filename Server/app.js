@@ -3,7 +3,6 @@ const express = require('express');
 const path = require('path');
 const cookieSession = require('cookie-session');
 const logger = require('morgan');
-const fileUpload = require ('express-fileupload') 
 
 
 const homeRouter = require('./routes/home');
@@ -13,7 +12,6 @@ const postsRouter = require('./routes/posts');
 const forumsRouter = require('./routes/forums');
 
 const app = express();
-app.use(cors())
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
