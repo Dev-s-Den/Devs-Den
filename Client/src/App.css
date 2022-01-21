@@ -51,32 +51,33 @@
   margin: 0px;
   bottom: 0;
   right: 0;
-  display: flex; 
+  display: flex;
   justify-content: flex-start;
 
   position: fixed;
-  
+
   color: #e4e6eb;
   font-size: 28px;
-  
-
 }
 
-
-.messaging-bar:hover{
-  color:rgb(28, 193, 176);
+.messaging-bar:hover {
+  color: rgb(28, 193, 176);
 }
 
-.messaging-bar-avatar{
+.messaging-bar-avatar {
   height: 32px;
   background-color: #242526;
   border-radius: 50%;
   border: 3px solid #2354bd;
   display: inline-block;
-  
 }
 
-.messaging-bar-avatar-container{
+.messaging-bar-avatar-container {
   margin-right: 15px;
 }
 
+.footer {
+  height: 75px;
+  width: 100%;
+  color: transparent;
+}
