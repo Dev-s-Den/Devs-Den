@@ -3,6 +3,8 @@ const express = require('express');
 const path = require('path');
 const cookieSession = require('cookie-session');
 const logger = require('morgan');
+const fileUpload = require ('express-fileupload') 
+const cors = require ('cors')
 
 const homeRouter = require('./routes/home');
 const usersRouter = require('./routes/users');
@@ -11,7 +13,7 @@ const postsRouter = require('./routes/posts');
 const forumsRouter = require('./routes/forums');
 
 const app = express();
-
+app.use(cors())
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -19,6 +21,11 @@ app.use(cookieSession({
   name: process.env.SESSION_NAME,
   keys: [process.env.SESSION_KEY1, process.env.SESSION_KEY2]
 }));
+app.use(fileUpload({
+  useTempFiles : true,
+  tempFileDir : '/tmp/'
+}));
+
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/api/home', homeRouter());

@@ -3,6 +3,14 @@ const router = express.Router();
 const { getPosts, addPosts, updatePostsLikes } = require('../db/queries/posts');
 
 module.exports = () => {
+
+  // router.post('/uploadimage', (req, res) => {
+  //   console.log("helloe",req.body)
+  //   console.log(req.files)
+  //   // updatePostsLikes(req.body.id, req.body.like)
+  //   //   .then(data => res.json(data))
+  // })
+
   router.get('/:forum_id', (req, res) => {
     getPosts(req.params.forum_id)
       .then(data => res.json(data))
@@ -15,6 +23,9 @@ module.exports = () => {
     updatePostsLikes(req.body.id, req.body.like)
       .then(data => res.json(data))
   })
+
+  
+
 
   return router;
 }
