@@ -51,6 +51,8 @@
   word-wrap: break-word;
   text-align: left;
   color: #e2e4e9;
+  display: flex;
+  flex-direction: column;
 }
 
 .post--footer {
@@ -137,4 +139,11 @@
     text-indent: 10px;
     font-weight: 700;
   }
+}
+
+.post-image{
+  max-width:500px;
+  display: flex;
+  align-self: center;
+  
 }
