@@ -4,6 +4,9 @@ import axios from "axios";
 // Styles
 import "./Styles/Post.scss";
 
+//helper functions for post
+import { switchCommentShow, handleChange  } from "../helpers/postHelper";
+
 // Components
 import Comment from "./Comment.jsx";
 
@@ -22,7 +25,6 @@ export default function Post(props) {
   }, [props.reFetchPosts]);
 
   // functions
-  const switchCommentShow = () => setShowComments(showComments ? false : true);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -120,7 +122,7 @@ export default function Post(props) {
             <i className="far fa-comments"></i>
             {comments.length}
           </span>}
-         {comments.length > 0 && <span className="hover" onClick={switchCommentShow}>
+         {comments.length > 0 && <span className="hover" onClick={()=> switchCommentShow(showComments, setShowComments)}>
             <i className="far fa-comments"></i>
             {comments.length}
           </span>}
