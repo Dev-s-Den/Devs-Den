@@ -52,6 +52,7 @@
   word-wrap: break-word;
   text-align: left;
   color: #e2e4e9;
+  font-size: 24px;
 }
 
 .post--footer {
@@ -80,8 +81,8 @@
 }
 
 .post--user--avatar {
-  height: 50px;
-  width: 50px;
+  height: 40px;
+  width: 40px;
   background-color: #bbb;
   border-radius: 50%;
   display: inline-block;
@@ -94,6 +95,7 @@
   font-size: 25px;
   span {
     margin-right: 20px;
+    color: rgb(18, 189, 84);
   }
 }
 
@@ -101,7 +103,7 @@
   border-top: 4px solid rgb(77, 75, 75);
 }
 
-.hover {
+.hover:hover {
   color: rgb(22, 250, 110);
 }
 

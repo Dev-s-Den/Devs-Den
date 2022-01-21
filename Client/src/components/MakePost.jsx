@@ -5,18 +5,16 @@ import axios from "axios";
 import "./Styles/MakePost.scss";
 
 export default function MakePost(props) {
+  const commentInfo ={ img: props.user.avatar, forum_id: props.forum_id, user_id: props.user.user_id };
   const [formNewPost, setformNewPost] = useState({});
   const [alert, setAlert] = useState({ display: "none", disabled: false });
 
   const handleChange = (event) => {
     const { name, value } = event.target;
     if (!props.user.user_id) {
-      setformNewPost({ ...formNewPost, [name]: value });
+      setformNewPost({ [name]: value });
     }
     setformNewPost({
-      img: props.user.avatar,
-      forum_id: props.forum_id,
-      user_id: props.user.user_id,
       [name]: value,
     });
   };
@@ -31,7 +29,7 @@ export default function MakePost(props) {
       setformNewPost({ ...formNewPost, content: "" });
       return console.log("empty");
     }
-    axios.post(`/api/posts/${props.forum_id}`, formNewPost).then(() => {
+    axios.post(`/api/posts/${props.forum_id}`, {...commentInfo, ...formNewPost}).then(() => {
       setAlert({ display: "none", disabled: false });
       props.reFetchPosts();
     });
