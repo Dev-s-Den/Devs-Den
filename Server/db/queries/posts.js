@@ -39,11 +39,11 @@ const updatePostsLikes = async (id, like) => {
 
 const getPostsByPattern = async (pattern) => {
   const values = pattern.replace(/[, ]+/g, " ").replace(/[. ]+/g, " ").trim().split(" ");
-  const posts = [];
+  let posts = [];
   try {
-    for (const value of values) {
-      const data = await dbConnection.query(`SELECT * FROM posts WHERE content LIKE %1%`, [value]);
-      posts.push(data.rows);
+    for (let value of values) {
+      const data = await dbConnection.query(`SELECT * FROM posts WHERE content LIKE $1`, [`%${value}%`]);
+      posts = [...posts, ...data.rows]
     }
     return posts;
   } catch (err) {
@@ -52,4 +52,4 @@ const getPostsByPattern = async (pattern) => {
   }
 }
 
-module.exports = { getPosts, addPosts, updatePostsLikes }
+module.exports = { getPosts, addPosts, updatePostsLikes, getPostsByPattern }
