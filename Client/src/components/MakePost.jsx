@@ -108,15 +108,18 @@ export default function MakePost(props) {
             placeholder="Write a post"
             value={formNewPost.content}
           ></textarea>
-
-          <div>
-            <input onChange={handleChange} name="img" type="file" />
+          <div className="buttons">
+            <input
+              className="image-button"
+              onChange={handleChange}
+              name="img"
+              type="file"
+            />
+            <button type="submit" className="btn btn-lg btn-success">
+              Post
+              <ion-icon name="send-outline"></ion-icon>
+            </button>
           </div>
-
-          <button type="submit" className="btn btn-lg btn-success">
-            Post
-            <ion-icon name="send-outline"></ion-icon>
-          </button>
 
           <div
             className="alert alert-danger size"
