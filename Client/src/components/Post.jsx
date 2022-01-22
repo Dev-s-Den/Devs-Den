@@ -49,7 +49,7 @@ export default function Post(props) {
       setLike(prev => { return prev + 1});
       });
   };
-
+   
   return (
     <div className="post">
       <header className="post--header">
@@ -59,7 +59,7 @@ export default function Post(props) {
             src={`${props.avatar}`}
             alt="user-avatar"
           />
-          <h2 className="post--name">{props.first_name}</h2>
+          <h2 className="post--name">{props.username}</h2>
         </div>
         <div className="post--header--left">
           <small className="post--Time">{props.created_at}</small>
