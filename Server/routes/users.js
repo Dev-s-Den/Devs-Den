@@ -37,7 +37,7 @@ module.exports = () => {
         if (!bcrypt.compareSync(req.body.password, data[0].password)) {
           return res.send('Incorrect credentials').status(403);
         }
-        res.send({cookie: req.session.email = data[0].email, user_id: data[0].id, avatar: data[0].avatar, first_name: data[0].first_name, last_name: data[0].last_name, email: data[0].email,chat_engine_secret: data[0].chat_engine_secret, github_url: data[0].github_url })
+        res.send({cookie: req.session.email = data[0].email, username:data[0].username, user_id: data[0].id, avatar: data[0].avatar, first_name: data[0].first_name, last_name: data[0].last_name, email: data[0].email,chat_engine_secret: data[0].chat_engine_secret, github_url: data[0].github_url })
       })
   })
 
