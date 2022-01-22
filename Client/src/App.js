@@ -7,6 +7,7 @@ import ForumNavBar from './components/ForumNavBar';
 import Forum from './components/Forum';
 import Home from './components/Home';
 import Chat from './components/Chat';
+import IDE from './components/IDE';
 
 // Styles
 import './App.css';
@@ -33,6 +34,7 @@ function App() {
         console.error(e.message);
       })
   }, []);
+
   //login click outside using UseRef to trigget the Dom to add onclick when outside the login form ****** creates a bug i have no idea how to fix
   const loginRef = useRef();
   useEffect(() => {
@@ -64,6 +66,7 @@ function App() {
         </div>
         <p>Messaging</p>
       </button>)}
+      <IDE />
       <footer className="footer"></footer>
     </div>
   );
