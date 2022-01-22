@@ -3,6 +3,7 @@ import AceEditor from "react-ace";
 import "ace-builds/src-noconflict/mode-javascript";
 import "ace-builds/src-noconflict/theme-monokai";
 import "ace-builds/src-noconflict/theme-github";
+import "ace-builds/src-noconflict/theme-solarized_dark";
 import "ace-builds/src-noconflict/theme-twilight";
 import "ace-builds/src-noconflict/ext-language_tools";
 import "ace-builds/webpack-resolver";
@@ -27,7 +28,7 @@ export default function IDE(props) {
   }, [test]);
 
   return (
-    <form>
+    <form className="IDE-form">
       <AceEditor
         placeholder="Write some code!"
         mode="javascript"
@@ -36,6 +37,9 @@ export default function IDE(props) {
           test(e);
         }}
         name="devsden"
+        height="895px"
+        width="95%"
+        value={code}
         fontSize={14}
         tabSize={2}
         editorProps={{ $blockScrolling: true }}
@@ -47,21 +51,32 @@ export default function IDE(props) {
         }}
         showGutter={true}
       />
-      <textarea className="console" value={codeResult} disabled></textarea>
-      <button
-        onClick={() => {
-          evalCode();
-        }}
-      >
-        Run
-      </button>
-      <button
-        onClick={() => {
-          this.refs.editor.editor.redo();
-        }}
-      >
-        Redo
-      </button>
+      <div className="footer">
+        <textarea
+          className="console"
+          value={`> ${codeResult}`}
+          disabled
+        ></textarea>
+        <div className="footer__bottom">
+          <button
+            className="btn btn-run"
+            onClick={() => {
+              evalCode();
+            }}
+          >
+            Run
+          </button>
+          <button
+            className="btn btn-reset"
+            onClick={() => {
+              setCode("");
+              setCodeResult("");
+            }}
+          >
+            Reset
+          </button>
+        </div>
+      </div>
     </form>
   );
 }
