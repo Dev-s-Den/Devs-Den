@@ -4,7 +4,7 @@ const { getPostsByPattern } = require('../db/queries/posts');
 
 module.exports = () => {
   router.get('/', (req, res) => {
-    getPostsByPattern(req.body.pattern)
+    getPostsByPattern(req.query.search)
       .then(data => res.json(data))
   })
   return router;

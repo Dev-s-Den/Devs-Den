@@ -42,7 +42,7 @@ const getPostsByPattern = async (pattern) => {
   let posts = [];
   try {
     for (let value of values) {
-      const data = await dbConnection.query(`SELECT * FROM posts WHERE content LIKE $1`, [`%${value}%`]);
+      const data = await dbConnection.query(`SELECT posts.id, to_char(posts.created_at  :: Date, 'Mon dd, yy HH12:MI') AS created_at , user_id, username, first_name, last_name, avatar, content, img, likes FROM posts JOIN users ON users.id = posts.user_id WHERE content LIKE $1`, [`%${value}%`]);
       posts = [...posts, ...data.rows]
     }
     return posts;
