@@ -25,11 +25,11 @@ const addPosts = async (user_id, forum_id, content, img) => {
 
 
 const updatePostsLikes = async (id, like) => {
-  const value = [like, id];
+  const values = [like, id];
   try {
     const data = await dbConnection.query(`UPDATE posts
     SET likes = $1
-    WHERE id = $2 RETURNING *;`, value)
+    WHERE id = $2 RETURNING *;`, values)
     return data.rows;
   } catch (err) {
     console.error(err.message);
@@ -37,4 +37,19 @@ const updatePostsLikes = async (id, like) => {
   }
 }
 
-module.exports = { getPosts, addPosts, updatePostsLikes }
+const getPostsByPattern = async (pattern) => {
+  const values = pattern.replace(/[, ]+/g, " ").replace(/[. ]+/g, " ").trim().split(" ");
+  let posts = [];
+  try {
+    for (let value of values) {
+      const data = await dbConnection.query(`SELECT posts.id, to_char(posts.created_at  :: Date, 'Mon dd, yy HH12:MI') AS created_at , user_id, username, first_name, last_name, avatar, content, img, likes FROM posts JOIN users ON users.id = posts.user_id WHERE content LIKE $1`, [`%${value}%`]);
+      posts = [...posts, ...data.rows]
+    }
+    return posts;
+  } catch (err) {
+    console.error(err.message);
+    return err.message;
+  }
+}
+
+module.exports = { getPosts, addPosts, updatePostsLikes, getPostsByPattern }

@@ -10,6 +10,7 @@ const usersRouter = require('./routes/users');
 const commentsRouter = require('./routes/comments');
 const postsRouter = require('./routes/posts');
 const forumsRouter = require('./routes/forums');
+const searchRouter = require('./routes/search');
 
 const app = express();
 app.use(logger('dev'));
@@ -28,5 +29,6 @@ app.use('/api/users', usersRouter());
 app.use('/api/comments', commentsRouter());
 app.use('/api/posts', postsRouter());
 app.use('/api/forums', forumsRouter());
+app.use('/api/search', searchRouter());
 
 module.exports = app;
