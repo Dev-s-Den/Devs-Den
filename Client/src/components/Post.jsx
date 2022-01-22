@@ -24,18 +24,6 @@ export default function Post(props) {
     });
   }, [props.reFetchPosts]);
 
-  // functions
-
-  // const handleChange = (e) => {
-  //   const { name, value } = e.target;
-  //   if (!props.user_id) {
-  //     setComment({[name]: value });
-  //   }
-  //   setComment({
-  //     [name]: value,
-  //   });
-  // };
-
   const submitComment = function (e) {
     e.preventDefault();
     if (!props.user.user_id) {
