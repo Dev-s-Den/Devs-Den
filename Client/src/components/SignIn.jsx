@@ -15,7 +15,6 @@ export default function SigninSignup(props) {
     Promise.all([
       axios.post('/api/users/login', formData),
     ]).then(data => {
-      console.log(data)
       props.setUser(data[0].data)
     })
   }
