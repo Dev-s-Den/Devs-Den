@@ -8,6 +8,7 @@ import Forum from './components/Forum';
 import Home from './components/Home';
 import Chat from './components/Chat';
 import IDE from './components/IDE';
+import Search from './components/Search';
 
 // Styles
 import './App.css';
@@ -22,6 +23,7 @@ function App() {
   const [forum, setForum] = useState(0);
   const [user, setUser] = useState(userObj);
   const [form, setForm] = useState("none");
+  const [searchValue, setSearchValue] = useState("")
 
   useEffect(() => {
     Promise.all([
@@ -55,9 +57,22 @@ function App() {
 
   return (
     <div className="App">
-      <NavBar loginRef={loginRef} user={user} setUser={setUser} value={value} setValue={setValue} form={form} setForm={setForm} redirect={() => { setForum(0) }} />
+      <NavBar
+        loginRef={loginRef}
+        user={user}
+        setUser={setUser}
+        value={value}
+        setValue={setValue}
+        form={form}
+        setForm={setForm}
+        forum={forum}
+        redirect={setForum}
+        searchValue={searchValue}
+        setSearchValue={setSearchValue}
+      />
       <ForumNavBar setForum={setForum} />
-      {!(forum === 0) && (<Forum forum_id={forum} user={user} />)}
+      {!(forum === 0 && forum !== 100) && (<Forum forum_id={forum} user={user} />)}
+      {(forum === 100) && <Search searchValue={searchValue} user={user} />}
       {(forum === 0) && <Home user={user} />}
       {!(user.user_id === "") && (<Chat user={user} show={showModal} closeModal={() => setShowModal(false)} />)}
       {!(user.user_id === "") && (<button className='messaging-bar' onClick={() => setShowModal(true)}>

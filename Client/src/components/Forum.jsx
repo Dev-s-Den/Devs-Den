@@ -39,11 +39,13 @@ export default function Forum(props) {
   return (
     <section>
       <div>
-        <img
-          className="forum-banner"
-          src={banner[0].img}
-          alt={banner[0].title}
-        />
+        {banner.length && (
+          <img
+            className="forum-banner"
+            src={banner[0].img}
+            alt={banner[0].title}
+          />
+        )}
       </div>
 
       <div className="forum-postContainer">
