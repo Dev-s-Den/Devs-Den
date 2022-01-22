@@ -55,6 +55,9 @@
   display: flex;
   flex-direction: column;
   font-size: 24px;
+  pre {
+    color: whitesmoke;
+  }
 }
 
 .post--footer {
@@ -139,8 +142,19 @@
     border-radius: 15px;
     background-color: #3a3b3c;
     color: #e2e4e9;
-    text-indent: 10px;
     font-weight: 700;
+    outline: none;
+    overflow: overlay;
+    resize: none;
+    padding-top: 13px;
+    padding-left: 20px;
+  }
+  .new-comment-input::placeholder {
+    padding: 2px;
+  }
+
+  .new-comment-input::-webkit-scrollbar {
+    display: none;
   }
 }
 

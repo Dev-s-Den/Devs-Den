@@ -1,5 +1,9 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { Remarkable } from "remarkable";
+import hljs from "highlight.js";
+import javascript from 'highlight.js/lib/languages/javascript';
+import 'highlight.js/styles/an-old-hope.css';
 
 // Styles
 import "./Styles/Post.scss";
@@ -9,6 +13,29 @@ import { switchCommentShow, handleChange  } from "../helpers/postHelper";
 
 // Components
 import Comment from "./Comment.jsx";
+
+//markdown register
+hljs.registerLanguage('javascript', javascript);
+
+//Markdown
+hljs.registerLanguage('javascript', javascript);
+
+const md = new Remarkable({
+  highlight: function (str, lang) {
+    if (lang && hljs.getLanguage(lang)) {
+      try {
+        return hljs.highlight(lang, str).value;
+      } catch (err) {}
+    }
+ 
+    try {
+      return hljs.highlightAuto(str).value;
+    } catch (err) {}
+ 
+    return '';
+  }
+});
+
 
 export default function Post(props) {
   // States
@@ -71,7 +98,7 @@ export default function Post(props) {
       </header>
 
       <div className="post--body">
-        <p>{props.content}</p>
+        <p dangerouslySetInnerHTML={{ __html: md.render(props.content) }}></p>
       { props.img && <img className="post-image" src={props.img} alt="user-post"/>}
       </div>
 
@@ -93,7 +120,7 @@ export default function Post(props) {
             alt="user-avatar"
           />
           <form onSubmit={submitComment} className="new-comment">
-            <input
+            <textarea
               name="content"
               type="text"
               className="new-comment-input"
