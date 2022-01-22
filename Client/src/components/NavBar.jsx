@@ -37,6 +37,9 @@ export default function Navbar(props) {
           alt="Dev's Den"
         />
       </a>
+        <div className="brand-glow">
+         <p >Dev's Den</p> 
+         </div>
       <button
         className="navbar-toggler"
         type="button"
