@@ -1,4 +1,4 @@
-import { useRef, useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import AceEditor from "react-ace";
 import "ace-builds/src-noconflict/mode-javascript";
 import "ace-builds/src-noconflict/theme-monokai";
@@ -10,14 +10,12 @@ import "ace-builds/webpack-resolver";
 import "./Styles/IDE.scss";
 
 export default function IDE(props) {
-  const aceEditor = useRef();
-
   const [code, setCode] = useState("");
   const [codeResult, setCodeResult] = useState("");
 
   const evalCode = () => {
     // eslint-disable-next-line no-eval
-    setCodeResult(code);
+    setCodeResult(eval(code));
   };
 
   const test = (e) => {
@@ -31,27 +29,25 @@ export default function IDE(props) {
   return (
     <form>
       <AceEditor
-        refs={aceEditor}
         placeholder="Write some code!"
         mode="javascript"
-        theme="github"
+        theme="twilight"
         onChange={(e) => {
           test(e);
         }}
         name="devsden"
-        ontSize={14}
+        fontSize={14}
+        tabSize={2}
         editorProps={{ $blockScrolling: true }}
         setOptions={{
           enableBasicAutocompletion: true,
           enableLiveAutocompletion: true,
           enableSnippets: true,
+          fontFamily: "Fira Code",
         }}
+        showGutter={true}
       />
-      <textarea
-        className="console"
-        value={eval(codeResult)}
-        disabled
-      ></textarea>
+      <textarea className="console" value={codeResult} disabled></textarea>
       <button
         onClick={() => {
           evalCode();
