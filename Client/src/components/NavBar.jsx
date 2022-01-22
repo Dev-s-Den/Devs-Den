@@ -37,9 +37,7 @@ export default function Navbar(props) {
           alt="Dev's Den"
         />
       </a>
-        <div className="brand-glow">
-         <p >Dev's Den</p> 
-         </div>
+         <img className='Devsbrand' src={require('../img/devs.png')} width='90'height='90' alt="logo"/>
       <button
         className="navbar-toggler"
         type="button"

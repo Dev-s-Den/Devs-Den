@@ -1,11 +1,11 @@
 .modal-chat-exterior {
   position: fixed;
-  left:0;
-  top:0;
-  right:0;
+  left: 0;
+  top: 0;
+  right: 0;
   bottom: 0;
-  background-color: rgba(0,0,0,0.5);
-  display:flex;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
@@ -15,19 +15,21 @@
 }
 .modal-chat-exterior.show {
   opacity: 1;
-  pointer-events:visible;
+  pointer-events: visible;
 }
 
-.modal-chat-body{
+.modal-chat-body {
   background-color: white;
-  width: 850px;
-  height:250px;
+  width: 950px;
+  height: 250px;
   transform: translateY(-200px);
   transition: all 0.3s ease-in-out;
 }
 
-
-.modal.show .modal-chat-body{
+.modal.show .modal-chat-body {
   transform: translateY(0);
 }
 
+.ce-chat-engine {
+  background-color: black;
+}

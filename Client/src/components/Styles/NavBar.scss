@@ -150,20 +150,7 @@
 #primarynav {
   background-color: #242526;
 }
-
-.brand-glow {
-  font-size: 40px;
-  color: rgb(111, 194, 143, 0.85);
-  text-align: center;
-  margin-top: 10px;
-  animation: glow 1s ease-in-out infinite alternate;
-  font-weight: 700;
-  position: relative;
-  font-family: "Cyberspace-Raceway-Back", sans-serif;
-  -webkit-clip: background;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: rgb(111, 194, 143, 0.85);
-  -webkit-text-stroke-width: 0.6px;
-  -webkit-text-stroke-color: rgb(212, 243, 250, 0.35);
-  filter: url(#extrude);
+.Devsbrand {
+  margin-left: 100px;
+  transform: scale(3.5);
 }

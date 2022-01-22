@@ -72,7 +72,7 @@ export default function Post(props) {
 
       <div className="post--body">
         <p>{props.content}</p>
-        <img className="post-image" src={props.img} alt="user-post"/>
+      { props.img && <img className="post-image" src={props.img} alt="user-post"/>}
       </div>
 
       {showComments && (
