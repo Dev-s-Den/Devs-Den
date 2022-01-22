@@ -24,7 +24,7 @@ export default function MakePost(props) {
       setAlert({ display: "flex", disabled: true });
       setTimeout(() => {
         setAlert({ disabled: true, display: "none" });
-      }, 5000);
+      }, 3000);
       setformNewPost({ ...formNewPost, content: "", img: "null" });
 
     } else {
@@ -103,11 +103,11 @@ export default function MakePost(props) {
             <ion-icon name="send-outline"></ion-icon>
           </button>
 
-
+            
           <div
-            className="alert alert-danger"
+            className="alert alert-danger size"
             role="alert"
-            style={{ display: alert.display }}
+            style={{ display: alert.display}}
           >
             Please login before attempting to post
           </div>

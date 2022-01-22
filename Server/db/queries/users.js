@@ -11,7 +11,7 @@ const getUsers = async (email) => {
   }
 }
 
-const addUsers = async (avatar,username,first_name, last_name, email, chat_engine_secret, password, github_url) => {
+const addUsers = async (avatar, username, first_name, last_name, email, chat_engine_secret, password, github_url) => {
   const values = [avatar, username, first_name, last_name, email, chat_engine_secret, password, github_url];
   try {
     const data = await dbConnection.query('INSERT INTO users (avatar, username, first_name, last_name, email, chat_engine_secret, password, github_url) VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING *;', values);

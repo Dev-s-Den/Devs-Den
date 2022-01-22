@@ -144,9 +144,14 @@
   }
 }
 
-.post-image{
-  max-width:500px;
+.post-image {
+  max-width: 500px;
   display: flex;
   align-self: center;
-  
+}
+.alert-size {
+  display: flex;
+  width: 95%;
+  justify-content: center;
+  align-content: center;
 }

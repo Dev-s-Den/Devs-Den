@@ -15,7 +15,8 @@ export default function Post(props) {
   const [comments, setComments] = useState([]);
   const [showComments, setShowComments] = useState(false);
   const [comment, setComment] = useState("");
-  const [like, setLike] = useState(props.likes)
+  const [like, setLike] = useState(props.likes);
+  const [alert, setAlert] = useState({ display: "none", disabled: false });
 
   //loads comments
   useEffect(() => {
@@ -28,13 +29,17 @@ export default function Post(props) {
     e.preventDefault();
     if (!props.user.user_id) {
       setComment({ content: "" });
-      return console.log("empty");
+      setAlert({ display: "flex", disabled: true });
+      return setTimeout(() => {
+        setAlert({ disabled: true, display: "none" });
+      }, 3000);
     }
     axios.post(`/api/comments/${props.id}`, { post_id: props.id,
       user_id: props.user.user_id, ...comment}).then(() => {
       axios.get(`/api/comments/${props.id}`).then((data) => {
+        setAlert({ display: "none", disabled: false });
         setComments(data.data);
-        setComment({ content: "" });
+       return setComment({ content: "" });
       });
     });
   };
@@ -42,7 +47,6 @@ export default function Post(props) {
   const updateLike = function (e) {
     e.preventDefault();
     if (!props.user.user_id) {
-      return console.log("empty");
     }
     axios.put(`/api/posts/${props.id}`, {id: props.id, like: like+1})
     .then(() => {
@@ -102,7 +106,6 @@ export default function Post(props) {
             </button>
           </form>
         </div>
-
         <span className="post--actions" >
           <span className="hover" onClick={updateLike}>
             <i className="far fa-thumbs-up"></i>{`${like}`}
@@ -117,6 +120,15 @@ export default function Post(props) {
           </span>}
         </span>
       </footer>
+      <div className="alert-size">
+        <div
+          className="alert alert-danger"
+          role="alert"
+          style={{ display: alert.display }}
+        >
+          Please login before attempting to comment
+        </div>
+      </div>
     </div>
   );
 }
