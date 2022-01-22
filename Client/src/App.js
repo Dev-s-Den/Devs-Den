@@ -76,10 +76,7 @@ function App() {
       {(forum === 0) && <Home user={user} />}
       {!(user.user_id === "") && (<Chat user={user} show={showModal} closeModal={() => setShowModal(false)} />)}
       {!(user.user_id === "") && (<button className='messaging-bar' onClick={() => setShowModal(true)}>
-        <div className="messaging-bar-avatar-container">
-          <img className="messaging-bar-avatar" src={user.avatar} alt="user avatar" />
-        </div>
-        <p>Messaging</p>
+        <ion-icon name="chatbubbles-outline"></ion-icon>
       </button>)}
       <IDE />
       <footer className="footer"></footer>
