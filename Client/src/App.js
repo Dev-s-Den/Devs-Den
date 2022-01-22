@@ -1,5 +1,6 @@
 // Libraries
 import React, { useState, useEffect, useRef } from 'react';
+import axios from 'axios';
 
 // Compnents
 import NavBar from './components/NavBar';
@@ -12,7 +13,7 @@ import Search from './components/Search';
 
 // Styles
 import './App.css';
-import axios from 'axios';
+import './footer.scss'
 
 function App() {
   const userObj = { user_id: "", avatar: "", first_name: "", last_name: "", email: "", github_url: "", chat_engine_secret: "" };
@@ -79,7 +80,34 @@ function App() {
         <ion-icon name="chatbubbles-outline"></ion-icon>
       </button>)}
       <IDE />
-      <footer className="footer"></footer>
+      <div className="footer-wrapper">
+        <footer className="App-footer">
+          <ul>
+            <li>
+              <h4>Alex Raffa</h4>
+              <div className="social-container">
+                <ion-icon name="logo-github" style={{ width: "55%", height: "55%", color: "white" }}></ion-icon>
+                <ion-icon name="logo-linkedin" style={{ width: "55%", height: "55%", color: "white" }}></ion-icon>
+              </div>
+            </li>
+            <li>
+              <h4>Jose Islas</h4>
+              <div className="social-container">
+                <ion-icon name="logo-github" style={{ width: "55%", height: "55%", color: "white" }}></ion-icon>
+                <ion-icon name="logo-linkedin" style={{ width: "55%", height: "55%", color: "white" }}></ion-icon>
+              </div>
+            </li>
+            <li>
+              <h4>Nicolas Alkhoury</h4>
+              <div className="social-container">
+                <ion-icon name="logo-github" style={{ width: "55%", height: "55%", color: "white" }}></ion-icon>
+                <ion-icon name="logo-linkedin" style={{ width: "55%", height: "55%", color: "white" }}></ion-icon>
+                <ion-icon name="logo-twitter" style={{ width: "55%", height: "55%", color: "white" }}></ion-icon>
+              </div>
+            </li>
+          </ul>
+        </footer>
+      </div>
     </div>
   );
 }
