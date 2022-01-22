@@ -101,6 +101,14 @@
     background-color: #999;
     transform: rotate(315deg);
   }
+
+  .search-send {
+    width: 14px;
+    position: relative;
+    color: rgba(193, 224, 180, 0.824);
+    top: 13px;
+    left: 300px;
+  }
 }
 
 @media (min-width: 992px) {
