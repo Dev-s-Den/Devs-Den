@@ -2,7 +2,7 @@ const dbConnection = require('../connection');
 
 const getComments = async (post_id) => {
   const values = post_id;
-  const query = `SELECT comments.id, first_name, last_name, to_char(comments.created_at  :: Date, 'Mon dd, yy HH12:MI') AS created_at, avatar, comments.content FROM comments 
+  const query = `SELECT comments.id,username,first_name, last_name, to_char(comments.created_at  :: Date, 'Mon dd, yy HH12:MI') AS created_at, avatar, comments.content FROM comments 
   JOIN users ON users.id = comments.user_id
    WHERE post_id =$1;`
 
