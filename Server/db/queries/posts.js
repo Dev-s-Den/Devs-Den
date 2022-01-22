@@ -25,12 +25,27 @@ const addPosts = async (user_id, forum_id, content, img) => {
 
 
 const updatePostsLikes = async (id, like) => {
-  const value = [like, id];
+  const values = [like, id];
   try {
     const data = await dbConnection.query(`UPDATE posts
     SET likes = $1
-    WHERE id = $2 RETURNING *;`, value)
+    WHERE id = $2 RETURNING *;`, values)
     return data.rows;
+  } catch (err) {
+    console.error(err.message);
+    return err.message;
+  }
+}
+
+const getPostsByPattern = async (pattern) => {
+  const values = pattern.replace(/[, ]+/g, " ").replace(/[. ]+/g, " ").trim().split(" ");
+  const posts = [];
+  try {
+    for (const value of values) {
+      const data = await dbConnection.query(`SELECT * FROM posts WHERE content LIKE %1%`, [value]);
+      posts.push(data.rows);
+    }
+    return posts;
   } catch (err) {
     console.error(err.message);
     return err.message;
