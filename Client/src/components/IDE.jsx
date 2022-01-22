@@ -60,7 +60,8 @@ export default function IDE(props) {
         <div className="footer__bottom">
           <button
             className="btn btn-run"
-            onClick={() => {
+            onClick={(e) => {
+              e.preventDefault();
               evalCode();
             }}
           >
@@ -68,7 +69,8 @@ export default function IDE(props) {
           </button>
           <button
             className="btn btn-reset"
-            onClick={() => {
+            onClick={(e) => {
+              e.preventDefault();
               setCode("");
               setCodeResult("");
             }}
