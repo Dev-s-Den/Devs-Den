@@ -14,7 +14,7 @@ export default function Forum(props) {
   const [isLoading, setLoading] = useState(true);
   const [posts, setPosts] = useState([]);
   const [banner, setBanner] = useState([]);
-  const [showIDE, setShowIDE] =useState(true);
+  const [showIDE, setShowIDE] =useState(false);
 
   useEffect(() => {
     Promise.all([
@@ -51,8 +51,13 @@ export default function Forum(props) {
         )}
       </div>
       <div className="forum-main-container">  
-        {showIDE && <IDE/>}     
-        <div className={`forum-postContainer ${showIDE && 'ideshown'}`} >
+        {!showIDE && <div className="ideslideoutbutton" onClick={()=>setShowIDE(true)}>
+          <img src='https://i.imgur.com/i7lkHS2.png' alt='IDE'/>
+        </div>}
+        {showIDE && <div className="forum-ide"><IDE/><div className="ideslideinbutton" onClick={()=>setShowIDE(false)}>
+          <img src='https://i.imgur.com/YUeWiqa.png' alt='IDE'/>
+        </div></div>}     
+        <div className='forum-postContainer' >
           {!props.user.user_id && (
             <MakePost forum_id={props.forum_id} user={props.user} />
           )}
