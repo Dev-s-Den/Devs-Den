@@ -39,12 +39,60 @@
 
         .social-container {
           display: flex;
-          justify-content: center;
+          justify-content: space-around;
           align-items: center;
           height: 45%;
           width: 95%;
           border-radius: 15px;
           box-shadow: 0px 2px 2px rgb(2, 191, 249), 0px 2px 2px rgb(0, 250, 17);
+
+          .github {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 100%;
+            font-size: 60px;
+            color: grey;
+            border-radius: 50%;
+            cursor: pointer;
+          }
+
+          .github:hover {
+            color: white;
+          }
+
+          .linkedIn {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 100%;
+            font-size: 60px;
+            color: grey;
+            border-radius: 50%;
+            cursor: pointer;
+          }
+
+          .linkedIn:hover {
+            color: rgb(61, 107, 167);
+          }
+
+          .twitter {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 100%;
+            font-size: 60px;
+            color: grey;
+            border-radius: 50%;
+            cursor: pointer;
+          }
+
+          .twitter:hover {
+            color: rgb(3, 159, 230);
+          }
         }
       }
     }
