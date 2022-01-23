@@ -109,6 +109,17 @@
     top: 13px;
     left: 300px;
   }
+
+  .btn.btn-lg.login-logout {
+    border: none;
+    background-color: rgb(58, 59, 60);
+    color: rgb(111, 194, 143);
+    box-shadow: 0px 3px 3px rgb(2, 191, 249), 0px 3px 3px rgb(0, 250, 17);
+  }
+
+  .btn.btn-lg.login-logout:focus {
+    background-color: rgb(87, 89, 91);
+  }
 }
 
 @media (min-width: 992px) {

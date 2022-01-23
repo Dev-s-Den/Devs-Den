@@ -43,7 +43,13 @@ export default function Navbar(props) {
           alt="Dev's Den"
         />
       </a>
-         <img className='Devsbrand' src={require('../img/devs.png')} width='90'height='90' alt="logo"/>
+      <img
+        className="Devsbrand"
+        src={require("../img/devs.png")}
+        width="90"
+        height="90"
+        alt="logo"
+      />
       <button
         className="navbar-toggler"
         type="button"
@@ -113,7 +119,7 @@ export default function Navbar(props) {
         {props.user.user_id === "" && (
           <ul className="nav navbar-nav navbar-right">
             <button
-              className="btn btn-lg btn-outline-success"
+              className="btn btn-lg login-logout"
               onClick={() => logForm(form, setForm)}
             >
               Login
@@ -126,7 +132,7 @@ export default function Navbar(props) {
         {!(props.user.user_id === "") && (
           <ul className="nav navbar-nav navbar-right">
             <button
-              className="btn btn-lg btn-outline-success"
+              className="btn btn-lg login-logout"
               onClick={() => logout()}
             >
               Logout
