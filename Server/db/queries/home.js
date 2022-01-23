@@ -14,7 +14,7 @@ const getHomePosts = async () => {
   try {
     let posts = [];
     for (const value of values) {
-      const data = await dbConnection.query(`SELECT posts.id, to_char(posts.created_at  ,'Mon dd ''yy HH:MI AM') AS created_at , user_id, username, first_name, last_name, avatar, content, img, likes FROM posts JOIN users ON users.id = posts.user_id WHERE forum_id=$1 LIMIT 3`, [value]);
+      const data = await dbConnection.query(`SELECT posts.id, to_char(posts.created_at  ,'Mon dd ''yy HH:MI AM') AS created_at , user_id, username, first_name, last_name, avatar, content, img, likes FROM posts JOIN users ON users.id = posts.user_id WHERE forum_id=$1 ORDER BY posts.id desc LIMIT 3;`, [value]);
       posts = [...posts, ...data.rows];
     }
     return posts;
