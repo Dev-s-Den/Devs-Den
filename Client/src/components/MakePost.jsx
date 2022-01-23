@@ -54,6 +54,7 @@ export default function MakePost(props) {
               })
               .then(() => {
                 setAlert({ display: "none", disabled: false });
+                setformNewPost({ ...formNewPost, content: "", img: "null" });
                 props.reFetchPosts();
               });
           })
