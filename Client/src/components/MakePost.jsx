@@ -5,13 +5,13 @@ import axios from "axios";
 import "./Styles/MakePost.scss";
 
 export default function MakePost(props) {
-  const [formNewPost, setformNewPost] = useState({ content: "", img: null });
+  const [formNewPost, setformNewPost] = useState({ content: "", img: null, imgname:"" });
   const [alert, setAlert] = useState({ display: "none", disabled: false });
 
   const handleChange = (event) => {
     const { name, value } = event.target;
     if (name === "img") {
-      setformNewPost({ ...formNewPost, [name]: event.target.files[0] });
+      setformNewPost({ ...formNewPost, [name]: event.target.files[0], imgname: value });
     } else {
       setformNewPost({ ...formNewPost, [name]: value });
     }
@@ -24,7 +24,7 @@ export default function MakePost(props) {
       setTimeout(() => {
         setAlert({ disabled: true, display: "none" });
       }, 3000);
-      setformNewPost({ ...formNewPost, content: "", img: "null" });
+      setformNewPost({ ...formNewPost, content: "", img: null, imgname:"" });
     } else {
       if (formNewPost.img !== null) {
         let bodyFormData = new FormData();
@@ -54,7 +54,7 @@ export default function MakePost(props) {
               })
               .then(() => {
                 setAlert({ display: "none", disabled: false });
-                setformNewPost({ ...formNewPost, content: "", img: "null" });
+                setformNewPost({ ...formNewPost, content: "", img: null, imgname:"" });
                 props.reFetchPosts();
               });
           })
@@ -70,7 +70,7 @@ export default function MakePost(props) {
           })
           .then(() => {
             setAlert({ display: "none", disabled: false });
-            setformNewPost({ ...formNewPost, content: "", img: "null" });
+            setformNewPost({ ...formNewPost, content: "", img: null, imgname:"" });
             props.reFetchPosts();
           });
       }
@@ -116,6 +116,7 @@ export default function MakePost(props) {
               onChange={handleChange}
               name="img"
               type="file"
+              value={formNewPost.imgname}
             />
             <button type="submit" className="btn btn-lg btn-success">
               Post
