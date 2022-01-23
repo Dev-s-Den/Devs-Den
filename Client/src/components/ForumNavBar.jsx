@@ -8,6 +8,11 @@ export default function ForumNavBar(props) {
 
   return (
     <nav className="forumnav">
+      {!(title === "") && (
+        <div className="forum-name">
+          <h1>{title}</h1>
+        </div>
+      )}
       <div
         className="forumnav-container"
         onClick={() => {
@@ -89,11 +94,6 @@ export default function ForumNavBar(props) {
           <img src="https://i.imgur.com/RBAYFXp.png" alt="SQL"></img>
         </span>
       </div>
-      {!(title === "") && (
-        <div className="forum-name">
-          <h1>{title}</h1>
-        </div>
-      )}
     </nav>
   );
 }

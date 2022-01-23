@@ -2,7 +2,7 @@
   width: 100%;
   background-color: #242526;
   display: flex;
-  justify-content: flex-start;
+  justify-content: space-around;
   align-items: center;
   flex-direction: row;
   padding: 8px;
@@ -10,35 +10,34 @@
   border-top: 3px solid rgba(171, 171, 171, 0.5);
 }
 
-.forumnav-container{
+.forumnav-container {
   margin-right: 15px;
   position: relative;
-  background: linear-gradient(45deg,#16fa6e, #2354bd);
+  background: linear-gradient(45deg, #16fa6e, #2354bd);
   padding: 5px;
   border-radius: 100%;
 
-  img{
+  img {
     height: 40px;
     width: 40px;
     border-radius: 100%;
-    transition: .6s ease-in-out;
+    transition: 0.6s ease-in-out;
   }
-  img:hover{
+  img:hover {
     transform: scale(1.2);
-    background: linear-gradient(45deg,#16fa6e, #13cb23);
+    background: linear-gradient(45deg, #16fa6e, #13cb23);
   }
-  span{
+  span {
     display: block;
     background-color: white;
     padding: 4px;
     border-radius: 100%;
   }
-
 }
 
-
 .forum-name {
-  h1 {font-family: 'Source Sans Pro', sans-serif;
+  h1 {
+    font-family: "Source Sans Pro", sans-serif;
     font-weight: 700;
     font-size: 50px;
     margin: 0;
