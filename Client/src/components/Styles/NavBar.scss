@@ -135,10 +135,11 @@
 }
 
 .nav-avatar {
-  height: 45px;
-  border: 3px solid blue;
-  border-radius: 100%;
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
   margin-right: 20px;
+  box-shadow: 0px 3px 3px rgb(2, 191, 249), 0px 3px 3px rgb(0, 250, 17);
 }
 
 .nav-userInfo {
