@@ -71,14 +71,18 @@ function App() {
         setSearchValue={setSearchValue}
       />
       <ForumNavBar setForum={setForum} />
-      {!(forum === 0 && forum !== 100) && (<Forum forum_id={forum} user={user} />)}
-      {(forum === 100) && <Search searchValue={searchValue} user={user} />}
-      {(forum === 0) && <Home user={user} />}
+      <div className='main-container'>
+        <div>
+          {!(forum === 0 && forum !== 100) && (<Forum forum_id={forum} user={user} />)}
+          {(forum === 100) && <Search searchValue={searchValue} user={user} />}
+          {(forum === 0) && <Home user={user} />}
+        </div>
+      </div>
       {!(user.user_id === "") && (<Chat user={user} show={showModal} closeModal={() => setShowModal(false)} />)}
       {!(user.user_id === "") && (<button className='messaging-bar' onClick={() => setShowModal(true)}>
         <ion-icon name="chatbubbles-outline"></ion-icon>
       </button>)}
-      <IDE />
+      
       <footer className="footer"></footer>
     </div>
   );
