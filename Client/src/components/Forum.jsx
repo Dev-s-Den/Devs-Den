@@ -7,11 +7,14 @@ import "./Styles/Forum.scss";
 // Components
 import Post from "./Post.jsx";
 import MakePost from "./MakePost.jsx";
+import IDE from './IDE';
+
 
 export default function Forum(props) {
   const [isLoading, setLoading] = useState(true);
   const [posts, setPosts] = useState([]);
   const [banner, setBanner] = useState([]);
+  const [showIDE, setShowIDE] =useState(false);
 
   useEffect(() => {
     Promise.all([
@@ -47,28 +50,35 @@ export default function Forum(props) {
           />
         )}
       </div>
-
-      <div className="forum-postContainer">
-        {!props.user.user_id && (
-          <MakePost forum_id={props.forum_id} user={props.user} />
-        )}
-        {props.user.user_id && (
-          <MakePost
-            reFetchPosts={reFetchPosts}
-            forum_id={props.forum_id}
-            user={props.user}
-          />
-        )}
-        {posts.map(function (postdata) {
-          return (
-            <Post
+      <div className="forum-main-container">  
+        {!showIDE && <div className="ideslideoutbutton" onClick={()=>setShowIDE(true)}>
+          <img src='https://i.imgur.com/i7lkHS2.png' alt='IDE'/>
+        </div>}
+        {showIDE && <div className="forum-ide"><IDE/><div className="ideslideinbutton" onClick={()=>setShowIDE(false)}>
+          <img src='https://i.imgur.com/YUeWiqa.png' alt='IDE'/>
+        </div></div>}     
+        <div className='forum-postContainer' >
+          {!props.user.user_id && (
+            <MakePost forum_id={props.forum_id} user={props.user} />
+          )}
+          {props.user.user_id && (
+            <MakePost
               reFetchPosts={reFetchPosts}
-              key={postdata.id}
-              {...postdata}
+              forum_id={props.forum_id}
               user={props.user}
             />
-          );
-        })}
+          )}
+          {posts.map(function (postdata) {
+            return (
+              <Post
+                reFetchPosts={reFetchPosts}
+                key={postdata.id}
+                {...postdata}
+                user={props.user}
+              />
+            );
+          })}
+        </div>
       </div>
     </section>
   );

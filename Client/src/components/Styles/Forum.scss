@@ -5,3 +5,53 @@
   box-shadow: 0px 20px 20px rgb(2, 191, 249) , 0px 20px 30px rgb(0, 250, 17);
 }
 
+.forum-main-container{
+  display: flex;
+  align-items: flex-start;
+  flex-direction: row;
+}
+
+.forum-postContainer{
+  width:100%
+}
+
+.ideslideoutbutton{
+  background-color: #232323;
+  color:rgb(5, 129, 167);
+  border-radius: 0px 10px 10px 0px;
+  height: 70px;
+  position: sticky;
+  margin-top: 140px;
+  bottom: 400px;
+  align-self: flex-end;
+  display:flex;
+  justify-content: center;
+  flex-direction: column;
+  box-shadow: 0px 10px 10px rgb(2, 191, 249), 0px 10px 15px rgb(0, 250, 17);;
+  img{
+    height:40px
+  }
+}
+
+.ideslideinbutton{
+  background-color: #232323;
+  color:rgb(5, 129, 167);
+  border-radius: 0px 10px 10px 0px;
+  height: 70px;
+  margin-top: 140px;
+  bottom: 400px;
+  z-index: 10;
+  
+  box-shadow: 10px 0px 18px rgb(12 129 89);
+  img{
+    height:40px
+  }
+}
+
+.forum-ide{
+  display: flex;
+  flex-direction: row;
+  position: sticky;
+  bottom: 1rem;
+  align-self: flex-end;
+}
