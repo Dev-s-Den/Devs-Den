@@ -1,14 +1,13 @@
 .homepost {
   overflow: auto;
   border-radius: 25px;
-  background: rgba(255,255,255,0.1);
+  background: rgba(255, 255, 255, 0.1);
   border-top: 1px solid rgba(62, 198, 177, 0.1);
-  border-left: 1px solid rgba(62, 198, 177, 0.1); 
+  border-left: 1px solid rgba(62, 198, 177, 0.1);
   overflow: hidden;
   padding: 20px;
   text-align: center;
   max-height: 90vh;
-  
 }
 
 .homepost--header {
@@ -48,6 +47,8 @@
   margin-top: 8px;
   font-size: 24px;
   padding: 2px 10px;
+  font-family: Fira Code, monospace;
+  letter-spacing: -1px;
 }
 
 .homepost--body {
@@ -141,7 +142,6 @@
       rgb(35, 84, 189, 0.6)
     );
   }
-  
 }
 
 .homepost-image {
