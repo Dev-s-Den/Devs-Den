@@ -2,6 +2,7 @@ INSERT INTO comments (post_id, user_id, content)
  VALUES ('1', '2', 'I have no idea how to help you.'),
         ( '1', '1', 'This is an amazing question but maybe someone with more expereince can help.'), 
         ( '2', '3', 'No Way Jose will be able to help you with this'),
+        ('6', '4', 'what does your .ruby-version file say?'),
         ('6', '5', 'What''s in your .bashrc or .zshrc? Do you have eval "$(rbenv init - zsh)" in it? Have you run rbenv rehash yet? What happens when you run "which ruby"?'),
         ('6', '2','"which ruby" should return "/path/to/home/.rbenv/shims/ruby'),
         ('7', '1','```
