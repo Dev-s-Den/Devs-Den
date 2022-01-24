@@ -5,13 +5,25 @@ import axios from "axios";
 import "./Styles/MakePost.scss";
 
 export default function MakePost(props) {
-  const [formNewPost, setformNewPost] = useState({ content: "", img: null, imgname:"" });
-  const [alert, setAlert] = useState({ display: "none", disabled: false });
+  const [formNewPost, setformNewPost] = useState({
+    content: "",
+    img: null,
+    imgname: "",
+  });
+  const [alert, setAlert] = useState({
+    display: "none",
+    disabled: false,
+    value: "Please login before attempting to post!",
+  });
 
   const handleChange = (event) => {
     const { name, value } = event.target;
     if (name === "img") {
-      setformNewPost({ ...formNewPost, [name]: event.target.files[0], imgname: value });
+      setformNewPost({
+        ...formNewPost,
+        [name]: event.target.files[0],
+        imgname: value,
+      });
     } else {
       setformNewPost({ ...formNewPost, [name]: value });
     }
@@ -20,11 +32,26 @@ export default function MakePost(props) {
   const submit = function (e) {
     e.preventDefault();
     if (!props.user.user_id) {
-      setAlert({ display: "flex", disabled: true });
+      setAlert({
+        display: "flex",
+        disabled: true,
+        value: "Please login before attempting to post!",
+      });
       setTimeout(() => {
         setAlert({ disabled: true, display: "none" });
       }, 3000);
-      setformNewPost({ ...formNewPost, content: "", img: null, imgname:"" });
+      setformNewPost({ ...formNewPost, content: "", img: null, imgname: "" });
+    } else if (!formNewPost.content || formNewPost.content === "") {
+      setAlert({
+        display: "flex",
+        value: "Can't submit an empty post!",
+      });
+      setTimeout(() => {
+        setAlert({
+          ...alert,
+          display: "none",
+        });
+      }, 3000);
     } else {
       if (formNewPost.img !== null) {
         let bodyFormData = new FormData();
@@ -54,7 +81,12 @@ export default function MakePost(props) {
               })
               .then(() => {
                 setAlert({ display: "none", disabled: false });
-                setformNewPost({ ...formNewPost, content: "", img: null, imgname:"" });
+                setformNewPost({
+                  ...formNewPost,
+                  content: "",
+                  img: null,
+                  imgname: "",
+                });
                 props.reFetchPosts();
               });
           })
@@ -70,7 +102,12 @@ export default function MakePost(props) {
           })
           .then(() => {
             setAlert({ display: "none", disabled: false });
-            setformNewPost({ ...formNewPost, content: "", img: null, imgname:"" });
+            setformNewPost({
+              ...formNewPost,
+              content: "",
+              img: null,
+              imgname: "",
+            });
             props.reFetchPosts();
           });
       }
@@ -129,7 +166,7 @@ export default function MakePost(props) {
             role="alert"
             style={{ display: alert.display }}
           >
-            Please login before attempting to post
+            {alert.value}
           </div>
         </form>
       </div>
