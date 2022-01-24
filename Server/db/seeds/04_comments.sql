@@ -69,4 +69,17 @@ Then in CSS:
 ```
 h1 { font-family: ''Droid Sans'', arial, serif; }
 ```
-' )
+' ),('9', '2', 'This could be done via CSS:
+```
+<style type="text/css">
+@font-face {
+    font-family: "My Custom Font";
+    src: url(http://www.example.org/mycustomfont.ttf) format("truetype");
+}
+p.customfont { 
+    font-family: "My Custom Font", Verdana, Tahoma;
+}
+</style>
+<p class="customfont">Hello world!</p>
+```
+')
