@@ -99,4 +99,11 @@ The short answer is that HTML is desperate to please and will accept basically a
 ('11', '1', 'The browser is trying to convert chucknorris into hex colour code, because it’s not a valid value.
 In chucknorris, everything except c is not a valid hex value.
 So it gets converted to c00c00000000.
-Which becomes #c00000, a shade of red.')
+Which becomes #c00000, a shade of red.'),('11', '2', 'chucknorris starts with c, and the browser reads it into a hexadecimal value.
+Because A, B, C, D, E, and F are characters in hexadecimal.
+The browser converts chucknorris to a hexadecimal value, C00C00000000.
+Then the C00C00000000 hexadecimal value is converted to RGB format (divided by 3):
+C00C00000000 ⇒ R:C00C, G:0000, B:0000
+The browser needs only two digits to indicate the colour:
+R:C00C, G:0000, B:0000 ⇒ R:C0, G:00, B:00 ⇒ C00000
+Finally, show bgcolor = C00000 in the web browser.')
