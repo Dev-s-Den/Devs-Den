@@ -1,8 +1,13 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import Carousel from 'react-bootstrap/Carousel'
+import "./Styles/Home.scss"
+import Tilt from 'react-parallax-tilt';
 
 // Components
-import Post from "./Post";
+import HomePost from "./HomePost";
+
+
 
 export default function Home(props) {
   // States
@@ -17,11 +22,22 @@ export default function Home(props) {
       .catch((err) => console.error(err.message));
   }, []);
 
+
+
   return (
-    <>
+    <Carousel>
       {posts.map((post) => {
-        return <Post key={post.id} {...post} user={props.user} />;
+        return (
+          <Carousel.Item>
+            <div className="body">
+              <Tilt glareEnable={true} glareMaxOpacity={0.25} glareColor="rgba(49, 204, 215, 0.646)" glarePosition="all" glareBorderRadius="25px">
+                <HomePost key={post.id} {...post} user={props.user} />
+              </Tilt>
+            </div>
+          </Carousel.Item>)
       })}
-    </>
+    </Carousel >
   );
 }
+
+
