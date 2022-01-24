@@ -33,4 +33,18 @@ On the index page I am displaying all of the posts I have in the table "Posts". 
        </div>
        <% end %> 
 ```
-          ','')
+          ',''), ('1', '3', 'I am a ruby beginner. I am using proc class but I am getting an error.
+```
+class Timeline
+    attr_accessor :tweets
+
+    def each(&block)  # Block into the proc
+        tweets.each(&block) # proc back into the block 
+    end
+end
+timeline = Timeline.new(tweets)
+timeline.each do |tweet|
+    puts tweet
+end
+````
+can ayone help?', '')
