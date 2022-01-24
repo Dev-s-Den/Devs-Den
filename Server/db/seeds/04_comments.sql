@@ -53,4 +53,20 @@ class Timeline
   end
 end
 ```
-')
+'),('9','3', '
+You can add some fonts via Google Web Fonts.
+
+Technically, the fonts are hosted at Google and you link them in the HTML header. Then, you can use them freely in CSS with @font-face (read about it).
+
+For example:
+
+In the <head> section:
+```
+<link href='' http://fonts.googleapis.com/css?family=Droid+Sans'' 
+rel=''stylesheet'' type=''text/css''> 
+```
+Then in CSS:
+```
+h1 { font-family: ''Droid Sans'', arial, serif; }
+```
+' )

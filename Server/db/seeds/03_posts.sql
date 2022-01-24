@@ -47,4 +47,6 @@ timeline.each do |tweet|
     puts tweet
 end
 ````
-can ayone help?', '')
+can ayone help?', ''),
+('9', '4', 'Is there a way to add some custom font on a website without using images, Flash or some other graphics?
+For example, I was working on a wedding website, and I found a lot of nice fonts for that subject. But I can''t find the right way to add that font on the server. And how do I include that font with CSS into the HTML? Is this possible to do without graphics?','')
