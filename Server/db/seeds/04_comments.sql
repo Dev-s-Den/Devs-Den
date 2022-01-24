@@ -94,4 +94,9 @@ p.customfont {
     <input name="extra" [(ngModel)]="extraVariable">
   </ng-container>
 </td>
-```')
+```'),('11','3','Answer In Simple Words:
+The short answer is that HTML is desperate to please and will accept basically anything you give it. HTML is built around intentionally ignoring malformed input.'),
+('11', '1', 'The browser is trying to convert chucknorris into hex colour code, because it’s not a valid value.
+In chucknorris, everything except c is not a valid hex value.
+So it gets converted to c00c00000000.
+Which becomes #c00000, a shade of red.')

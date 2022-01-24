@@ -58,4 +58,12 @@ If the user selects ''HS2'', I want to create a new input field upon selecting t
      <option *ngFor="let object of rowData.taskListMap | keyvalue" [ngValue]="object.value"> {{object.value}}</option>
   </select>
 </td>
-```', '')
+```', ''),('5', '4', 'Why do certain random strings produce colors when entered as background colors in HTML?
+For example:
+```
+<body bgcolor="chucknorris"> test </body>
+```
+...produces a document with a red background across all browsers and platforms.
+On the other hand, chucknorr produces a yellow background!
+What’s going on here?
+','')
