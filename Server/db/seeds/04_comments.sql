@@ -38,5 +38,19 @@ def tweets=(tweets)
   @tweets = tweets
 end
 ```
-When you call tweets inside the each method, you just call method with this name, not a local variable, so you should set @tweets in the initialize method because right now your @tweets variable is not set
+'),('8','7', 'When you call tweets inside the each method, you just call method with this name, not a local variable, so you should set @tweets in the initialize method because right now your @tweets variable is not set:
+```
+class Timeline
+  attr_accessor :tweets # this is just a nice syntax for instance variable setter 
+                        # and getter
+
+  def initialize(tweets)
+    @tweets = tweets
+  end 
+
+  def each(&block)  # Block into the proc
+    tweets.each(&block) # proc back into the block 
+  end
+end
+```
 ')
