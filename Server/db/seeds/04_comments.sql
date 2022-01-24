@@ -27,4 +27,16 @@ This can be somewhat hard to grasp but remeber that any plaintext in a template 
 
 Change ```<%= @posts.each do |post| %>``` for ```<% @posts.each do |post| %>```, note the missing ''='' in the second snippet.
 
-When you include the ''='' the output of .each is printed in the HTML, in this case the array of posts.')
+When you include the ''='' the output of .each is printed in the HTML, in this case the array of posts.'),
+('8','3', 'When you define attr_accessor :tweets, you just define 2 instance methods:
+```
+def tweets
+  @tweets
+end
+
+def tweets=(tweets)
+  @tweets = tweets
+end
+```
+When you call tweets inside the each method, you just call method with this name, not a local variable, so you should set @tweets in the initialize method because right now your @tweets variable is not set
+')
