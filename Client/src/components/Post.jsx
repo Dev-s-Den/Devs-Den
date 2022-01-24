@@ -2,23 +2,20 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Remarkable } from "remarkable";
 import hljs from "highlight.js";
-import javascript from 'highlight.js/lib/languages/javascript';
-import 'highlight.js/styles/an-old-hope.css';
+import javascript from "highlight.js/lib/languages/javascript";
+import "highlight.js/styles/an-old-hope.css";
 
 // Styles
 import "./Styles/Post.scss";
 
 //helper functions for post
-import { switchCommentShow, handleChange  } from "../helpers/postHelper";
+import { switchCommentShow, handleChange } from "../helpers/postHelper";
 
 // Components
 import Comment from "./Comment.jsx";
 
 //markdown register
-hljs.registerLanguage('javascript', javascript);
-
-//Markdown
-hljs.registerLanguage('javascript', javascript);
+hljs.registerLanguage("javascript", javascript);
 
 const md = new Remarkable({
   highlight: function (str, lang) {
@@ -27,15 +24,14 @@ const md = new Remarkable({
         return hljs.highlight(lang, str).value;
       } catch (err) {}
     }
- 
+
     try {
       return hljs.highlightAuto(str).value;
     } catch (err) {}
- 
-    return '';
-  }
-});
 
+    return "";
+  },
+});
 
 export default function Post(props) {
   // States
@@ -61,26 +57,34 @@ export default function Post(props) {
         setAlert({ disabled: true, display: "none" });
       }, 3000);
     }
-    axios.post(`/api/comments/${props.id}`, { post_id: props.id,
-      user_id: props.user.user_id, ...comment}).then(() => {
-      axios.get(`/api/comments/${props.id}`).then((data) => {
-        setAlert({ display: "none", disabled: false });
-        setComments(data.data);
-       return setComment({ content: "" });
+    axios
+      .post(`/api/comments/${props.id}`, {
+        post_id: props.id,
+        user_id: props.user.user_id,
+        ...comment,
+      })
+      .then(() => {
+        axios.get(`/api/comments/${props.id}`).then((data) => {
+          setAlert({ display: "none", disabled: false });
+          setComments(data.data);
+          return setComment({ content: "" });
+        });
       });
-    });
   };
 
   const updateLike = function (e) {
     e.preventDefault();
     if (!props.user.user_id) {
     }
-    axios.put(`/api/posts/${props.id}`, {id: props.id, like: like+1})
-    .then(() => {
-      setLike(prev => { return prev + 1});
+    axios
+      .put(`/api/posts/${props.id}`, { id: props.id, like: like + 1 })
+      .then(() => {
+        setLike((prev) => {
+          return prev + 1;
+        });
       });
   };
-   
+
   return (
     <div className="post">
       <header className="post--header">
@@ -99,7 +103,9 @@ export default function Post(props) {
 
       <div className="post--body">
         <p dangerouslySetInnerHTML={{ __html: md.render(props.content) }}></p>
-      { props.img && <img className="post-image" src={props.img} alt="user-post"/>}
+        {props.img && (
+          <img className="post-image" src={props.img} alt="user-post" />
+        )}
       </div>
 
       {showComments && (
@@ -113,9 +119,11 @@ export default function Post(props) {
       <footer className="post--footer">
         <div className="post--footer--left">
           <img
-            src={ !props.user.avatar
-              ? "https://i.imgur.com/WxNkK7J.png"
-              : props.user.avatar}
+            src={
+              !props.user.avatar
+                ? "https://i.imgur.com/WxNkK7J.png"
+                : props.user.avatar
+            }
             className="post--user--avatar"
             alt="user-avatar"
           />
@@ -125,7 +133,7 @@ export default function Post(props) {
               type="text"
               className="new-comment-input"
               placeholder="Wite a comment..."
-              onChange={(e)=> handleChange(e, setComment, props.user_id)}
+              onChange={(e) => handleChange(e, setComment, props.user_id)}
               value={comment.content}
             />
             <button className="btn btn-m btn-success" type="submit">
@@ -133,18 +141,26 @@ export default function Post(props) {
             </button>
           </form>
         </div>
-        <span className="post--actions" >
+        <span className="post--actions">
           <span className="hover" onClick={updateLike}>
-            <i className="far fa-thumbs-up"></i>{`${like}`}
+            <i className="far fa-thumbs-up"></i>
+            {`${like}`}
           </span>
-         {comments.length === 0 && <span className="hover" onClick={null} >
-            <i className="far fa-comments"></i>
-            {comments.length}
-          </span>}
-         {comments.length > 0 && <span className="hover" onClick={()=> switchCommentShow(showComments, setShowComments)}>
-            <i className="far fa-comments"></i>
-            {comments.length}
-          </span>}
+          {comments.length === 0 && (
+            <span className="hover" onClick={null}>
+              <i className="far fa-comments"></i>
+              {comments.length}
+            </span>
+          )}
+          {comments.length > 0 && (
+            <span
+              className="hover"
+              onClick={() => switchCommentShow(showComments, setShowComments)}
+            >
+              <i className="far fa-comments"></i>
+              {comments.length}
+            </span>
+          )}
         </span>
       </footer>
       <div className="alert-size">
