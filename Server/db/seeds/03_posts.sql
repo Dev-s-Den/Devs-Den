@@ -1,4 +1,4 @@
-INSERT INTO posts (user_id, forum_id, content, img)
+INSERT INTO posts (user_id, forum_id, content, img, likes)
  VALUES 
   ('1', '7', 'I tried selecting everything in a table but did not work
   ```sql

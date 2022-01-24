@@ -1,39 +1,37 @@
-
-.body *{
-  margin:0;
-  padding:0;
+.body * {
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
 }
 
-.body{
-  display:flex;
+.body {
+  display: flex;
   justify-content: center;
   align-items: center;
   background-color: #18191a;
-  height:100vh;
+  height: 100vh;
 }
 
-.carousel-control-next-icon{
-  background-image : url(https://i.imgur.com/fuOFQoH.png);
-  height:88px;
+.carousel-control-next-icon {
+  background-image: url(https://i.imgur.com/fuOFQoH.png);
+  height: 88px;
   width: 88px;
 }
-.carousel-control-next .visually-hidden{
+.carousel-control-next .visually-hidden {
   display: none;
 }
 
-.carousel-control-prev-icon{
-  background-image : url(https://i.imgur.com/YUeWiqa.png);
-  height:88px;
+.carousel-control-prev-icon {
+  background-image: url(https://i.imgur.com/YUeWiqa.png);
+  height: 88px;
   width: 88px;
 }
-.carousel-control-prev .visually-hidden{
+.carousel-control-prev .visually-hidden {
   display: none;
 }
-.carousel-indicators{
+.carousel-indicators {
   margin-top: 40px;
   button {
     background-color: rgb(64 109 84);
   }
-  
 }
