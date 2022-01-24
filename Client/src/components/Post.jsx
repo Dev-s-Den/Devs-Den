@@ -66,6 +66,7 @@ export default function Post(props) {
       .then(() => {
         axios.get(`/api/comments/${props.id}`).then((data) => {
           setAlert({ display: "none", disabled: false });
+          setShowComments(true);
           setComments(data.data);
           return setComment({ content: "" });
         });
