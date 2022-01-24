@@ -39,7 +39,11 @@ export default function Post(props) {
   const [showComments, setShowComments] = useState(false);
   const [comment, setComment] = useState("");
   const [like, setLike] = useState(props.likes);
-  const [alert, setAlert] = useState({ display: "none", disabled: false });
+  const [alert, setAlert] = useState({
+    display: "none",
+    disabled: false,
+    value: "",
+  });
 
   //loads comments
   useEffect(() => {
@@ -52,9 +56,23 @@ export default function Post(props) {
     e.preventDefault();
     if (!props.user.user_id) {
       setComment({ content: "" });
-      setAlert({ display: "flex", disabled: true });
+      setAlert({
+        display: "flex",
+        disabled: true,
+        value: "Please login before submitting a comment!",
+      });
       return setTimeout(() => {
         setAlert({ disabled: true, display: "none" });
+      }, 3000);
+    }
+    if (!comment.content || comment.content === "") {
+      setAlert({
+        ...alert,
+        display: "flex",
+        value: "Can't submit an empty comment!",
+      });
+      return setTimeout(() => {
+        setAlert({ display: "none" });
       }, 3000);
     }
     axios
@@ -170,7 +188,7 @@ export default function Post(props) {
           role="alert"
           style={{ display: alert.display }}
         >
-          Please login before attempting to comment
+          {alert.value}
         </div>
       </div>
     </div>
