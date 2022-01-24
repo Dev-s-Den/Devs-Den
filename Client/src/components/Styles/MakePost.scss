@@ -31,6 +31,8 @@
       font-size: 25px;
       margin-top: 7px;
       margin-left: 7px;
+      margin-bottom: 0;
+      padding-top: 7px;
       font-weight: bold;
       background-color: black;
       background-image: linear-gradient(
@@ -88,8 +90,7 @@
 
       .make-post-input::placeholder {
         color: rgb(170, 170, 170, 0.5);
-        font-size: 1.7em;
-        padding: 10px;
+        font-size: 1.3em;
       }
 
       .make-post-input:focus::placeholder {
@@ -137,8 +138,10 @@
           );
           border: none;
           border-radius: 15px;
-          height: 60%;
+          height: 62%;
           width: 95%;
+          color: white;
+          font-weight: 700;
         }
       }
 
