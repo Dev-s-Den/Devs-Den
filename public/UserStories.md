@@ -25,7 +25,7 @@ Registered devs can upload images to show coding errors, or to share the issues 
 
 ### Markdown is accepted in posts and comments
 
-![markdown](./gif/markdwon.gif)
+![markdown](./gif/markdown.gif)
 Registered devs can share their code blocks by putting their content inside three back-ticks Example:
 <br> \```<Language-shortcut (js)>
 <br>Your code goes inside<br>
