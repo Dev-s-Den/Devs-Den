@@ -82,4 +82,16 @@ p.customfont {
 </style>
 <p class="customfont">Hello world!</p>
 ```
-')
+'),('10', '1', 'Just use an *ngIf:
+```
+<td pEditableColumn style="width: 70px; word-wrap: break-word;">
+  <select class="form-control-sm" [disabled]="searchBeanRes.rowAllSelect" [(ngModel)]="rowData.assignToAllTaskType" [(ngModel)]="rowData.taskTypeName" (click)="taskAssign(rowData,rowData.taskTypeName)">
+     <option [value]="null">--Select--</option>
+     <option *ngFor="let object of rowData.taskListMap | keyvalue" [ngValue]="object.value"> {{object.value}}</option>
+  </select>
+
+  <ng-container *ngIf="value == ''H2''">
+    <input name="extra" [(ngModel)]="extraVariable">
+  </ng-container>
+</td>
+```')
