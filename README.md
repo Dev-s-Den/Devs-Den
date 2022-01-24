@@ -19,24 +19,20 @@
 ![Canva](https://img.shields.io/badge/Canva-%2300C4CC.svg?style=for-the-badge&logo=Canva&logoColor=white)
 ![Figma](https://img.shields.io/badge/figma-%23F24E1E.svg?style=for-the-badge&logo=figma&logoColor=white)
 
-# Devs-Den
+# Summary
 
-Social Media Platform for Web Developers and Software Engineers that provides various ways to communicate, learn and spread knowledge.
+Dev's Den is a social media platform for software developers and software engineers to share coding knowledge, learn new things and tackle problems as a community
 
-Dev's Den is designed to give users the best experience and tools to share ideas, resources and takle problems as a community.
+# Functionality
 
-## Functionality
-
-Form more user stories [click here](./public/UserStories.md)
-
-### Home Page & Search-bar
+## Home Page & Search-bar
 
 ![Home Page](./public/gif/homePageAndSearch.gif)
-<br>
-
 Home Page, displays the last current posts from every forum, and the searh bar can display from all the posts the ones that match your query
 
-## Project Structure
+For more user stories [click here](./public/UserStories.md)
+
+# Project Structure
 
 - [Front-End](/Client)
   - [Components](/Client/src/components)
@@ -48,3 +44,17 @@ Home Page, displays the last current posts from every forum, and the searh bar c
     - [Schemas](/Server/db/schema)
     - [Seeds](/Server/db/seeds)
   - [API-Routes](/Server/routes)
+
+# Project Setup
+
+- [Fork](https://github.com/Dev-s-Den/Devs-Den/fork) this repository and clone to your local device.
+- Install dependencies with `npm install` in both [Server](/Server) and [Client](/Client).
+- Make an ENV file for the back-end [.env.example](/Server/.env.example).
+- Make an ENV file for the front-end [.env.example](/Client/.env.example).
+- Build a database (psql preferrably) and change the information in the ENV file accordingly.
+- Run the server using `cd Server`, `npm run local`.
+- Run the application front-end using `cd Client`, `npm start`.
+
+## Front-End
+
+Additional documentation (React) [here](/Client/README.md).
