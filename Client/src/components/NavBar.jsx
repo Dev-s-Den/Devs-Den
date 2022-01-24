@@ -7,13 +7,25 @@ import "./Styles/NavBar.scss";
 import { click, logForm } from "../helpers/helper";
 
 export default function Navbar(props) {
-  const { form, setForm } = props;
+  const {
+    form,
+    setForm,
+    setTitle,
+    user,
+    setUser,
+    value,
+    setValue,
+    setSearchValue,
+    redirect,
+    loginRef,
+  } = props;
+
   //States
   const [clicked, setClicked] = useState({ width: "60px" });
 
   const logout = () => {
     axios.get("/api/users/logout").then(() => {
-      props.setUser({
+      setUser({
         user_id: "",
         avatar: "",
         first_name: "",
@@ -25,8 +37,8 @@ export default function Navbar(props) {
   };
 
   useEffect(() => {
-    props.setSearchValue(props.value);
-  }, [props.value]);
+    setSearchValue(value);
+  }, [value]);
 
   return (
     <nav className="navbar navbar-expand-lg navbar-dark py-1" id="primarynav">
@@ -37,8 +49,9 @@ export default function Navbar(props) {
           height="70"
           className="navbar-logo"
           onClick={() => {
-            props.redirect(0);
-            props.setValue("");
+            redirect(0);
+            setTitle("");
+            setValue("");
           }}
           alt="Dev's Den"
         />
@@ -68,11 +81,7 @@ export default function Navbar(props) {
             <div
               className="dropdown-menu"
               aria-labelledby="navbarDropdownMenuLink"
-            >
-              <a className="dropdown-item" href="#"></a>
-              <a className="dropdown-item" href="#"></a>
-              <a className="dropdown-item" href="#"></a>
-            </div>
+            ></div>
           </li>
         </ul>
         <div className="navbar-search mr-auto" style={clicked}>
@@ -87,36 +96,33 @@ export default function Navbar(props) {
                 type="text"
                 placeholder="Explore"
                 onChange={(e) => {
-                  props.setValue(e.target.value);
+                  setValue(e.target.value);
                 }}
-                value={props.value}
+                value={value}
               ></input>
             </div>
-            <div className="clear" onClick={() => props.setValue("")}></div>
+            <div className="clear" onClick={() => setValue("")}></div>
             <div
               className="search-send"
               onClick={(e) => {
                 e.preventDefault();
-                props.redirect(100);
+                setTitle("");
+                redirect(100);
               }}
             >
               <ion-icon name="send-outline"></ion-icon>
             </div>
           </form>
         </div>
-        {!(props.user.user_id === "") && (
+        {!(user.user_id === "") && (
           <div className="nav-userInfo">
-            <img
-              className="nav-avatar"
-              src={props.user.avatar}
-              alt="user avatar"
-            />
+            <img className="nav-avatar" src={user.avatar} alt="user avatar" />
             <h1>
-              {props.user.first_name} {props.user.last_name}
+              {user.first_name} {user.last_name}
             </h1>
           </div>
         )}
-        {props.user.user_id === "" && (
+        {user.user_id === "" && (
           <ul className="nav navbar-nav navbar-right">
             <button
               className="btn btn-lg login-logout"
@@ -124,12 +130,12 @@ export default function Navbar(props) {
             >
               Login
             </button>
-            <div ref={props.loginRef}>
-              <SigninSignup setUser={props.setUser} state={form} />
+            <div ref={loginRef}>
+              <SigninSignup setUser={setUser} state={form} />
             </div>
           </ul>
         )}
-        {!(props.user.user_id === "") && (
+        {!(user.user_id === "") && (
           <ul className="nav navbar-nav navbar-right">
             <button
               className="btn btn-lg login-logout"
