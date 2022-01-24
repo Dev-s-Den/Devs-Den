@@ -1,10 +1,8 @@
-import React, { useState } from "react";
-
 // Styles
 import "./Styles/ForumNavBar.scss";
 
 export default function ForumNavBar(props) {
-  const [title, setTitle] = useState("");
+  const { title, setTitle } = props;
 
   return (
     <nav className="forumnav">

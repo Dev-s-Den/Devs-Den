@@ -24,6 +24,7 @@ function App() {
   const [user, setUser] = useState(userObj);
   const [form, setForm] = useState("none");
   const [searchValue, setSearchValue] = useState("")
+  const [title, setTitle] = useState("");
 
   useEffect(() => {
     Promise.all([
@@ -58,6 +59,7 @@ function App() {
   return (
     <div className="App">
       <NavBar
+        setTitle={setTitle}
         loginRef={loginRef}
         user={user}
         setUser={setUser}
@@ -70,7 +72,7 @@ function App() {
         searchValue={searchValue}
         setSearchValue={setSearchValue}
       />
-      <ForumNavBar setForum={setForum} />
+      <ForumNavBar setForum={setForum} title={title} setTitle={setTitle} />
       <div className='main-container'>
         <div>
           {(forum !== 0 && forum !== 100) && (<Forum forum_id={forum} user={user} />)}
