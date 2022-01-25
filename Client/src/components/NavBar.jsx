@@ -36,6 +36,13 @@ export default function Navbar(props) {
     });
   };
 
+  const submitthesearch = (e) =>{
+    e.preventDefault()
+    setTitle("");
+    redirect(100);
+    
+  }
+
   useEffect(() => {
     setSearchValue(value);
   }, [value]);
@@ -85,7 +92,7 @@ export default function Navbar(props) {
           </li>
         </ul>
         <div className="navbar-search mr-auto" style={clicked}>
-          <form>
+          <form onSubmit={(e)=>submitthesearch(e)}>
             <div
               className="icon"
               onClick={() => click(clicked, setClicked)}
@@ -105,9 +112,7 @@ export default function Navbar(props) {
             <div
               className="search-send"
               onClick={(e) => {
-                e.preventDefault();
-                setTitle("");
-                redirect(100);
+                submitthesearch(e)
               }}
             >
               <ion-icon name="send-outline"></ion-icon>
