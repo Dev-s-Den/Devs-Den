@@ -66,6 +66,7 @@ function makeid(length) {
   }
   return result;
 }
+makeid(10)
 ```
 '),
 
