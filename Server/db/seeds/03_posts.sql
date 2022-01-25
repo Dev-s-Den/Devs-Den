@@ -114,4 +114,4 @@ For example:
 ...produces a document with a red background across all browsers and platforms.
 On the other hand, chucknorr produces a yellow background!
 What''s going on here?
-','')
+','', '0')
