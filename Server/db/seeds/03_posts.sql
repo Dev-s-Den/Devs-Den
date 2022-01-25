@@ -61,7 +61,7 @@ cout << "bit 5 is " << BitParser::getBitAt(buffer, 5) << endl;
 ```
 Assuming I created the ```BitParser``` class. What would the ```BitParser``` class definition look like?
 '
-, null), ('3', '3','So my gemfile specifies ruby 2.6.3 and I used rbenv to install ruby 2.6.3. However, when I try to run rake db:create, it gives me an "Your Ruby version is 2.7.0, but your Gemfile specified 2.6.3" error. I even check my ruby version using ruby -v and it even tells me I have 2.6.3. Can someone explain why this is occurring?',''), 
+, null, '4'), ('3', '3','So my gemfile specifies ruby 2.6.3 and I used rbenv to install ruby 2.6.3. However, when I try to run rake db:create, it gives me an "Your Ruby version is 2.7.0, but your Gemfile specified 2.6.3" error. I even check my ruby version using ruby -v and it even tells me I have 2.6.3. Can someone explain why this is occurring?',''), 
 ('4', '3', 'I''m not really sure how to quote this question, but I''m making a clone of Reddit in Ruby on Rails.
 
 On the index page I am displaying all of the posts I have in the table "Posts". But when I display them all, at the end of the last post a text shows up which is wrapped in square brackets and contains all of the information from the table. I just want to know how to remove this text.
