@@ -4,13 +4,13 @@ INSERT INTO posts (user_id, forum_id, content, img, likes)
   ```sql
   SELECT * FROM table
   ```
-  Can someone help?', null, 2),
-  ('2', '7', 'How do you perform the equivalent of Oracles `DESCRIBE TABLE` in PostgreSQL (using the psql command)?', null, 4),
+  Can someone help?', null, '2'),
+  ('2', '7', 'How do you perform the equivalent of Oracles `DESCRIBE TABLE` in PostgreSQL (using the psql command)?', null, '4'),
   ('3', '7', 'I am trying to automate database creation process with a shell script and one thing I have hit a road block with passing a password to psql. Here is a bit of code from the shell script:
   ```sql
   psql -U $DB_USER -h localhost -c"$DB_RECREATE_SQL"
   ```
-  How do I pass a password to `psql` in a non-interactive way?', null,0),
+  How do I pass a password to `psql` in a non-interactive way?', null, '0'),
 (
 '1', '1', 'If I defined an object in JS with:
 ```js
@@ -20,16 +20,16 @@ How can I convert the object to JSON? The output string should be:
 ```js
 var j={"name":"binchen"};
 ```
-', null, 3),
+', null, '3'),
 
 ('8', '1', 'I have a very simple JavaScript array that may or may not contain duplicates.
 ```js
 var names = ["Mike","Matt","Nancy","Adam","Jenny","Nancy","Carl"];
 ```
 I need to remove the duplicates and put the unique values in a new array.
-', null, 1), 
+', null, '1'), 
 
-('3', '1', 'Does anyone have a quick solution to generate a random strings of specified length in js? I am having issues with my solution method', null, 2),
+('3', '1', 'Does anyone have a quick solution to generate a random strings of specified length in js? I am having issues with my solution method', null, '2'),
 
 ('2', '1', 'I have an array of objects and I want to .map() over the array while destructuring elements. Is there a way to achive it?
 
@@ -49,7 +49,7 @@ const nav = documents.map((*destructure here so I get .text property*, index) =>
         return categoryName;
     });
 ```
-', null),
+', null, '5'),
 
 ('5', '2', 'Hi everyone I am working on some really tough c++ problems. If anyone is interested in getting together and doing some peer programming shoot me a direct message.'
 , null),
