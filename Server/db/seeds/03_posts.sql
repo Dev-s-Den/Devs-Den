@@ -10,7 +10,7 @@ INSERT INTO posts (user_id, forum_id, content, img, likes)
   ```sql
   psql -U $DB_USER -h localhost -c"$DB_RECREATE_SQL"
   ```
-  How do I pass a password to `psql` in a non-interactive way?', null),
+  How do I pass a password to `psql` in a non-interactive way?', null,0),
 (
 '1', '1', 'If I defined an object in JS with:
 ```js
