@@ -19,6 +19,7 @@ export default function Home(props) {
 
   return (
     <>
+    {posts.length===0 && <div className="noresults" style={{minHeight:"65vh"}}><p> No Results Found ...</p></div>}
       {posts.map((post) => {
         return <Post key={post.id} {...post} user={props.user} />;
       })}
