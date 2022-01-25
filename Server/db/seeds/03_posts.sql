@@ -54,7 +54,7 @@ const nav = documents.map((*destructure here so I get .text property*, index) =>
 ('5', '2', 'Hi everyone I am working on some really tough c++ problems. If anyone is interested in getting together and doing some peer programming shoot me a direct message.'
 , null, '1'),
 ('6', '2', 'In what scenarios is it better to use a ```struct``` vs a ```class``` in C++?'
-, null),
+, null, '1'),
 ('3', '2', 'How do you create a static class in C++? I should be able to do something like:
 ```c++
 cout << "bit 5 is " << BitParser::getBitAt(buffer, 5) << endl;
