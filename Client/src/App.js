@@ -74,7 +74,7 @@ function App() {
       />
       <ForumNavBar setForum={setForum} title={title} setTitle={setTitle} />
       <div className='main-container'>
-        <div>
+        <div style={{ minHeight: '57vh' }}>
           {(forum !== 0 && forum !== 100) && (<Forum forum_id={forum} user={user} />)}
           {(forum === 100) && <Search searchValue={searchValue} user={user} />}
           {(forum === 0) && <Home user={user} />}
