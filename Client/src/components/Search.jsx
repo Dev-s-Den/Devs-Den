@@ -18,10 +18,10 @@ export default function Home(props) {
   }, [props.searchValue]);
 
   return (
-    <>
+    <div className="search">
       {posts.map((post) => {
         return <Post key={post.id} {...post} user={props.user} />;
       })}
-    </>
+    </div>
   );
 }
