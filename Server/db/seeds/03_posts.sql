@@ -29,7 +29,7 @@ var names = ["Mike","Matt","Nancy","Adam","Jenny","Nancy","Carl"];
 I need to remove the duplicates and put the unique values in a new array.
 ', null, 1), 
 
-('3', '1', 'Does anyone have a quick solution to generate a random strings of specified length in js? I am having issues with my solution method', null),
+('3', '1', 'Does anyone have a quick solution to generate a random strings of specified length in js? I am having issues with my solution method', null, 2),
 
 ('2', '1', 'I have an array of objects and I want to .map() over the array while destructuring elements. Is there a way to achive it?
 
