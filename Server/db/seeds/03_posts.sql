@@ -81,7 +81,7 @@ On the index page I am displaying all of the posts I have in the table "Posts". 
        </div>
        <% end %> 
 ```
-          ',''), ('1', '3', 'I am a ruby beginner. I am using proc class but I am getting an error.
+          ','', '4'), ('1', '3', 'I am a ruby beginner. I am using proc class but I am getting an error.
 ```
 class Timeline
     attr_accessor :tweets
