@@ -27,7 +27,7 @@ var j={"name":"binchen"};
 var names = ["Mike","Matt","Nancy","Adam","Jenny","Nancy","Carl"];
 ```
 I need to remove the duplicates and put the unique values in a new array.
-', null), 
+', null, 1), 
 
 ('3', '1', 'Does anyone have a quick solution to generate a random strings of specified length in js? I am having issues with my solution method', null),
 
