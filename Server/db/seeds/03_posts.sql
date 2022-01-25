@@ -20,8 +20,7 @@ How can I convert the object to JSON? The output string should be:
 ```js
 var j={"name":"binchen"};
 ```
-', null
-),
+', null, 3),
 
 ('8', '1', 'I have a very simple JavaScript array that may or may not contain duplicates.
 ```js
