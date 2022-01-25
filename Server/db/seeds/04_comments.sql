@@ -53,7 +53,7 @@ Basically, we iterate over the array and, for each element, check if the first p
 ('5', '8', 'Thanks you so much :)'),
 
 
-('6', '2', 'Pleast post your code so we can see what your issue is'),
+('6', '2', 'Please post your code so we can see what your issue is'),
 ('6','6','Maybe this function will work for you:
 ```js
 function makeid(length) {
