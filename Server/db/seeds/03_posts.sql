@@ -97,7 +97,7 @@ end
 ````
 can ayone help?', '', '3'),
 ('9', '4', 'Is there a way to add some custom font on a website without using images, Flash or some other graphics?
-For example, I was working on a wedding website, and I found a lot of nice fonts for that subject. But I can''t find the right way to add that font on the server. And how do I include that font with CSS into the HTML? Is this possible to do without graphics?',''),('8', '4', 'I am trying to dynamically create a new input field based on user input. Please see example it will make more sense.
+For example, I was working on a wedding website, and I found a lot of nice fonts for that subject. But I can''t find the right way to add that font on the server. And how do I include that font with CSS into the HTML? Is this possible to do without graphics?','', '1'),('8', '4', 'I am trying to dynamically create a new input field based on user input. Please see example it will make more sense.
 If the user selects ''HS2'', I want to create a new input field upon selecting that value. If the user were to select HS2, but change to (for example) HS1, I would want to remove that input field because it should only be present once its selected. This should be in realtime and NOT after the user clicks submit. Here is my current code:
 ```
 <td pEditableColumn style="width: 70px; word-wrap: break-word;">
