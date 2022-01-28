@@ -21,7 +21,7 @@
 
 # Summary
 
-Dev's Den is a social media platform for software developers and software engineers to share coding knowledge, learn new things and tackle problems as a community
+<b>Dev's Den</b> is a social media platform for software developers and software engineers to share coding knowledge, learn new things and tackle problems as a community
 
 # Functionality
 
